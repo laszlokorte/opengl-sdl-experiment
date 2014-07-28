@@ -21,10 +21,9 @@
 #include "../lib/glm/glm/glm.hpp"
 #include "../graphics/shader.hpp"
 
-#include "node.hpp"
+#include "group.hpp"
 
-class ObjectNodeRenderer;
-class ObjectNode : public Node {
+class Model : public Group {
     GLuint vertexArray;
     struct {
         GLuint Vertex;
@@ -35,18 +34,18 @@ class ObjectNode : public Node {
     const GLenum glType = GL_UNSIGNED_INT;
     std::shared_ptr<Shader> shader;
 public:
-    ObjectNode(glm::vec3 pos, glm::quat rot, glm::vec3 scl,
+    Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl,
                Vertex vertices[], GLuint vCount, Triangle tris[], GLuint triCount, std::shared_ptr<Shader> shad);
     
-    ObjectNode(Vertex vertices[], GLuint vertexCount, Triangle tris[], GLuint triCount, std::shared_ptr<Shader> shad);
-    
-    void renderWith(const ObjectNodeRenderer &renderer) const;
-    
+    Model(Vertex vertices[], GLuint vertexCount, Triangle tris[], GLuint triCount, std::shared_ptr<Shader> shad);
+        
     virtual void update();
     
-    ~ObjectNode();
+    void accept( Visitor & );
     
-    friend ObjectNodeRenderer;
+    ~Model();
+    
+    friend class ModelRenderer;
 };
 
 

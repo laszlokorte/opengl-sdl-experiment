@@ -14,6 +14,7 @@
 #define __OpenGLTest__node__
 
 #include <stdio.h>
+#include <list>
 #include <vector>
 
 #include <OpenGL/gl3.h>
@@ -23,40 +24,42 @@
 #include "../lib/glm/glm/glm.hpp"
 #include "../lib/glm/glm/gtx/vector_angle.hpp"
 #include "../graphics/shader.hpp"
+#include "visitor/visitor_base.hpp"
+#include "component.hpp"
 
 class NodeRenderer;
+class ObjectNodeRenderer;
 
-class Node {
+class Group : public Component {
     glm::mat4 matrix;
-    std::vector<const Node*> children;
-    
 public:
     glm::vec3 position;
     glm::quat rotation;
     glm::vec3 scale;
-    bool dirty;
+
+    bool dirty = true;
     
-    Node(glm::vec3 pos, glm::quat rot, glm::vec3 scl);
+    Group(glm::vec3 pos, glm::quat rot, glm::vec3 scl);
     
-    Node();
+    Group();
     
-    void addChild(const Node* &c);
+    ~Group();
     
-    virtual void renderWith(const NodeRenderer &renderer) const {
-        
-    };
-    
-    virtual void update() {
-        
-    };
-    
-    void refreshMatrix(glm::mat4 parent);
+    void refreshMatrix(const glm::mat4 &parent);
+    void update();
     
     const glm::mat4 getMatrix() const;
     
-    ~Node();
+    void add( std::shared_ptr<Component> );
+    void remove( std::shared_ptr<Component> );
     
-    friend class NodeRenderer;
+    void accept( Visitor & );
+private:
+    typedef std::list<std::shared_ptr<Component>> CONTAINER_TYPE;
+    typedef CONTAINER_TYPE::iterator ITERATOR;
+    CONTAINER_TYPE container;
+    
+    friend class Model;
 };
 
 

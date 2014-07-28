@@ -10,6 +10,12 @@
 
 #include "shader.hpp"
 
+Shader::Shader(const GLchar** vsh, const GLchar** fsh) throw (ShaderException)
+: handles(createProgram(vsh, fsh, {}))
+{
+    
+}
+
 Shader::~Shader() {
     glDeleteProgram(handles.program);
 }
@@ -34,8 +40,8 @@ Shader::Handles Shader::createProgram(const GLchar** vertexShader, const GLchar*
     
     h.program = glCreateProgram();
     
-    GLuint vsh = compileShader(Vertex, vertexShader);
-    GLuint fsh = compileShader(Fragment, fragmentShader);
+    GLuint vsh = compileShader(Shader::Type::Vertex, vertexShader);
+    GLuint fsh = compileShader(Shader::Type::Fragment, fragmentShader);
     
     glAttachShader(h.program, vsh);
     glAttachShader(h.program, fsh);
@@ -72,7 +78,7 @@ Shader::Handles Shader::createProgram(const GLchar** vertexShader, const GLchar*
     return h;
 }
 
-GLuint Shader::compileShader(Type type, const GLchar** source) {
+GLuint Shader::compileShader(Shader::Type type, const GLchar** source) {
     GLint compileOk;
     GLint errLength;
     GLchar* errMsg;

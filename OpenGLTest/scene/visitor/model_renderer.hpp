@@ -18,24 +18,26 @@
 #include <SDL2/SDL_opengl.h>
 
 #define GLM_FORCE_RADIANS
-#include "../lib/glm/glm/glm.hpp"
+#include "../../lib/glm/glm/glm.hpp"
 
-#include "node_renderer.hpp"
-#include "node.hpp"
-#include "object_node.hpp"
+#include "visitor_base.hpp"
+#include "group.hpp"
+#include "model.hpp"
 
-class ObjectNode;
 
-class ObjectNodeRenderer : public NodeRenderer {
+class ModelRenderer : public Visitor {
 public:
-    virtual void render(const Node &node) const;
-    virtual void render(const ObjectNode &node) const;
-    
+    glm::mat4 projection;
+    glm::mat4 view;
+
+    ~ModelRenderer();
+    void visit( class Group & );
+    void leave( class Group & );
+    void visit( class Model & );
+    void leave( class Model & );
+
 private:
-    void renderSingleNode(const Node &node, glm::mat4 modelView) const;
-    void renderSingleNode(const ObjectNode &node, glm::mat4 modelView) const;
-    
-    friend class ObjectNode;
+    void renderModel(const Model &model) const;
 };
 
 #endif /* defined(__OpenGLTest__object_node_renderer__) */

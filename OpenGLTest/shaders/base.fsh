@@ -14,8 +14,8 @@ struct Light {
 uniform Light uLight;
 uniform sampler2D uTexture;
 
-in vec4 fPos;
-in vec4 fNormal;
+in vec3 fPos;
+in vec3 fNormal;
 in vec4 fColor;
 in vec4 fTexCoord;
 

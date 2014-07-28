@@ -57,11 +57,7 @@ public:
     } identifiers;
 
     
-    Shader(const GLchar** vsh, const GLchar** fsh) throw (ShaderException)
-    : handles(createProgram(vsh, fsh, {}))
-    {
-        
-    }
+    explicit Shader(const GLchar** vsh, const GLchar** fsh) throw (ShaderException);
     
     ~Shader();
     

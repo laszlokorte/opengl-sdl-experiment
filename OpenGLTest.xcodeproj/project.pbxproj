@@ -8,14 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		F291C98619860231006EBD70 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F291C98519860231006EBD70 /* SDL2.framework */; };
+		F2D9B9E3198633D40052836B /* gameloop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9E2198633D40052836B /* gameloop.cpp */; };
+		F2D9B9E7198645120052836B /* render_delegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9E41986396B0052836B /* render_delegate.cpp */; };
+		F2D9B9ED1986575B0052836B /* component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9EB1986575B0052836B /* component.cpp */; };
+		F2D9B9FD1986733B0052836B /* matrix_refresher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9F51986733B0052836B /* matrix_refresher.cpp */; };
+		F2D9B9FE1986733B0052836B /* model_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9F71986733B0052836B /* model_renderer.cpp */; };
+		F2D9B9FF1986733B0052836B /* updater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9F91986733B0052836B /* updater.cpp */; };
+		F2D9BA001986733B0052836B /* visitor_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9FB1986733B0052836B /* visitor_base.cpp */; };
+		F2D9BA031986848D0052836B /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9BA011986848D0052836B /* keyboard.cpp */; };
+		F2D9BA0619868BAD0052836B /* keyboard_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9BA0419868BAD0052836B /* keyboard_adapter.cpp */; };
 		F2DD7A061985FC84000E5D31 /* empty in Resources */ = {isa = PBXBuildFile; fileRef = F2DD7A041985FC77000E5D31 /* empty */; };
 		F2DD7A071985FCA8000E5D31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DD79D01985FA12000E5D31 /* Images.xcassets */; };
 		F2DD7A0A1985FD84000E5D31 /* time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DD7A081985FD84000E5D31 /* time.cpp */; };
 		F2F3F6CA1985DEF600C8FAF4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F26E0DCA1893EFC300D4C163 /* main.cpp */; };
-		F2F3F6CB1985DF0700C8FAF4 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F831985C9C300102679 /* node.cpp */; };
-		F2F3F6CC1985DF0700C8FAF4 /* object_node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F861985C9DD00102679 /* object_node.cpp */; };
-		F2F3F6CD1985DF0700C8FAF4 /* node_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F891985C9EA00102679 /* node_renderer.cpp */; };
-		F2F3F6CE1985DF0700C8FAF4 /* object_node_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F8C1985C9F800102679 /* object_node_renderer.cpp */; };
+		F2F3F6CB1985DF0700C8FAF4 /* group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F831985C9C300102679 /* group.cpp */; };
+		F2F3F6CC1985DF0700C8FAF4 /* model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F861985C9DD00102679 /* model.cpp */; };
 		F2F3F6CF1985DF0700C8FAF4 /* opengl_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F771985C6BF00102679 /* opengl_utils.cpp */; };
 		F2F3F6D01985DF1A00C8FAF4 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F801985C86900102679 /* shader.cpp */; };
 		F2F3F6D91985DFF500C8FAF4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E13331893F7B700D4C163 /* OpenGL.framework */; };
@@ -278,6 +285,23 @@
 		F291C98519860231006EBD70 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		F2A161AF198541190033F98A /* base.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = base.vsh; sourceTree = "<group>"; };
 		F2A161B0198541390033F98A /* base.fsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = base.fsh; sourceTree = "<group>"; };
+		F2D9B9E2198633D40052836B /* gameloop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gameloop.cpp; sourceTree = "<group>"; };
+		F2D9B9E41986396B0052836B /* render_delegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = render_delegate.cpp; sourceTree = "<group>"; };
+		F2D9B9E51986396B0052836B /* render_delegate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = render_delegate.hpp; sourceTree = "<group>"; };
+		F2D9B9EB1986575B0052836B /* component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = component.cpp; sourceTree = "<group>"; };
+		F2D9B9EC1986575B0052836B /* component.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = component.hpp; sourceTree = "<group>"; };
+		F2D9B9F51986733B0052836B /* matrix_refresher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix_refresher.cpp; sourceTree = "<group>"; };
+		F2D9B9F61986733B0052836B /* matrix_refresher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = matrix_refresher.hpp; sourceTree = "<group>"; };
+		F2D9B9F71986733B0052836B /* model_renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = model_renderer.cpp; sourceTree = "<group>"; };
+		F2D9B9F81986733B0052836B /* model_renderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = model_renderer.hpp; sourceTree = "<group>"; };
+		F2D9B9F91986733B0052836B /* updater.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = updater.cpp; sourceTree = "<group>"; };
+		F2D9B9FA1986733B0052836B /* updater.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = updater.hpp; sourceTree = "<group>"; };
+		F2D9B9FB1986733B0052836B /* visitor_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = visitor_base.cpp; sourceTree = "<group>"; };
+		F2D9B9FC1986733B0052836B /* visitor_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = visitor_base.hpp; sourceTree = "<group>"; };
+		F2D9BA011986848D0052836B /* keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keyboard.cpp; sourceTree = "<group>"; };
+		F2D9BA021986848D0052836B /* keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keyboard.h; sourceTree = "<group>"; };
+		F2D9BA0419868BAD0052836B /* keyboard_adapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keyboard_adapter.cpp; sourceTree = "<group>"; };
+		F2D9BA0519868BAD0052836B /* keyboard_adapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keyboard_adapter.h; sourceTree = "<group>"; };
 		F2DD79D01985FA12000E5D31 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F2DD7A041985FC77000E5D31 /* empty */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = empty; sourceTree = "<group>"; };
 		F2DD7A081985FD84000E5D31 /* time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time.cpp; sourceTree = "<group>"; };
@@ -288,14 +312,10 @@
 		F2DE3F7F1985C82100102679 /* base.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = base.hpp; sourceTree = "<group>"; };
 		F2DE3F801985C86900102679 /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shader.cpp; sourceTree = "<group>"; };
 		F2DE3F811985C86900102679 /* shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = shader.hpp; sourceTree = "<group>"; };
-		F2DE3F831985C9C300102679 /* node.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = node.cpp; sourceTree = "<group>"; };
-		F2DE3F841985C9C300102679 /* node.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = node.hpp; sourceTree = "<group>"; };
-		F2DE3F861985C9DD00102679 /* object_node.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = object_node.cpp; sourceTree = "<group>"; };
-		F2DE3F871985C9DD00102679 /* object_node.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = object_node.hpp; sourceTree = "<group>"; };
-		F2DE3F891985C9EA00102679 /* node_renderer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = node_renderer.cpp; sourceTree = "<group>"; };
-		F2DE3F8A1985C9EA00102679 /* node_renderer.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = node_renderer.hpp; sourceTree = "<group>"; };
-		F2DE3F8C1985C9F800102679 /* object_node_renderer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = object_node_renderer.cpp; sourceTree = "<group>"; };
-		F2DE3F8D1985C9F800102679 /* object_node_renderer.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = object_node_renderer.hpp; sourceTree = "<group>"; };
+		F2DE3F831985C9C300102679 /* group.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = group.cpp; sourceTree = "<group>"; };
+		F2DE3F841985C9C300102679 /* group.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = group.hpp; sourceTree = "<group>"; };
+		F2DE3F861985C9DD00102679 /* model.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = model.cpp; sourceTree = "<group>"; };
+		F2DE3F871985C9DD00102679 /* model.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = model.hpp; sourceTree = "<group>"; };
 		F2F3F6AA1985DE9700C8FAF4 /* OpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F3F6D11985DF5A00C8FAF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -647,6 +667,21 @@
 			path = shaders;
 			sourceTree = "<group>";
 		};
+		F2D9B9F4198672D50052836B /* visitor */ = {
+			isa = PBXGroup;
+			children = (
+				F2D9B9F51986733B0052836B /* matrix_refresher.cpp */,
+				F2D9B9F61986733B0052836B /* matrix_refresher.hpp */,
+				F2D9B9F71986733B0052836B /* model_renderer.cpp */,
+				F2D9B9F81986733B0052836B /* model_renderer.hpp */,
+				F2D9B9F91986733B0052836B /* updater.cpp */,
+				F2D9B9FA1986733B0052836B /* updater.hpp */,
+				F2D9B9FB1986733B0052836B /* visitor_base.cpp */,
+				F2D9B9FC1986733B0052836B /* visitor_base.hpp */,
+			);
+			path = visitor;
+			sourceTree = "<group>";
+		};
 		F2DE3F761985C67A00102679 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +696,10 @@
 		F2DE3F7A1985C74A00102679 /* input */ = {
 			isa = PBXGroup;
 			children = (
+				F2D9BA011986848D0052836B /* keyboard.cpp */,
+				F2D9BA021986848D0052836B /* keyboard.h */,
+				F2D9BA0419868BAD0052836B /* keyboard_adapter.cpp */,
+				F2D9BA0519868BAD0052836B /* keyboard_adapter.h */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -668,14 +707,13 @@
 		F2DE3F7B1985C76D00102679 /* scene */ = {
 			isa = PBXGroup;
 			children = (
-				F2DE3F831985C9C300102679 /* node.cpp */,
-				F2DE3F841985C9C300102679 /* node.hpp */,
-				F2DE3F861985C9DD00102679 /* object_node.cpp */,
-				F2DE3F871985C9DD00102679 /* object_node.hpp */,
-				F2DE3F891985C9EA00102679 /* node_renderer.cpp */,
-				F2DE3F8A1985C9EA00102679 /* node_renderer.hpp */,
-				F2DE3F8C1985C9F800102679 /* object_node_renderer.cpp */,
-				F2DE3F8D1985C9F800102679 /* object_node_renderer.hpp */,
+				F2D9B9F4198672D50052836B /* visitor */,
+				F2DE3F831985C9C300102679 /* group.cpp */,
+				F2DE3F841985C9C300102679 /* group.hpp */,
+				F2DE3F861985C9DD00102679 /* model.cpp */,
+				F2DE3F871985C9DD00102679 /* model.hpp */,
+				F2D9B9EB1986575B0052836B /* component.cpp */,
+				F2D9B9EC1986575B0052836B /* component.hpp */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -684,6 +722,9 @@
 			isa = PBXGroup;
 			children = (
 				F2DE3F7D1985C7C800102679 /* gameloop.hpp */,
+				F2D9B9E2198633D40052836B /* gameloop.cpp */,
+				F2D9B9E41986396B0052836B /* render_delegate.cpp */,
+				F2D9B9E51986396B0052836B /* render_delegate.hpp */,
 			);
 			path = loop;
 			sourceTree = "<group>";
@@ -778,14 +819,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2D9B9ED1986575B0052836B /* component.cpp in Sources */,
 				F2DD7A0A1985FD84000E5D31 /* time.cpp in Sources */,
 				F2F3F6D01985DF1A00C8FAF4 /* shader.cpp in Sources */,
-				F2F3F6CB1985DF0700C8FAF4 /* node.cpp in Sources */,
-				F2F3F6CC1985DF0700C8FAF4 /* object_node.cpp in Sources */,
-				F2F3F6CD1985DF0700C8FAF4 /* node_renderer.cpp in Sources */,
-				F2F3F6CE1985DF0700C8FAF4 /* object_node_renderer.cpp in Sources */,
+				F2F3F6CB1985DF0700C8FAF4 /* group.cpp in Sources */,
+				F2F3F6CC1985DF0700C8FAF4 /* model.cpp in Sources */,
+				F2D9B9FF1986733B0052836B /* updater.cpp in Sources */,
+				F2D9BA031986848D0052836B /* keyboard.cpp in Sources */,
+				F2D9B9E7198645120052836B /* render_delegate.cpp in Sources */,
+				F2D9BA001986733B0052836B /* visitor_base.cpp in Sources */,
+				F2D9B9E3198633D40052836B /* gameloop.cpp in Sources */,
+				F2D9BA0619868BAD0052836B /* keyboard_adapter.cpp in Sources */,
+				F2D9B9FE1986733B0052836B /* model_renderer.cpp in Sources */,
 				F2F3F6CF1985DF0700C8FAF4 /* opengl_utils.cpp in Sources */,
 				F2F3F6CA1985DEF600C8FAF4 /* main.cpp in Sources */,
+				F2D9B9FD1986733B0052836B /* matrix_refresher.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
