@@ -1,0 +1,3 @@
+[submodule "OpenGLTest/lib/glm"]
+	path = OpenGLTest/lib/glm
+	url = git@github.com:g-truc/glm.git

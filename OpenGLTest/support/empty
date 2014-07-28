@@ -1,0 +1,2 @@
+This file is a workaround for an xcode bug.
+It needs to be configured to be copied into the Resource folder during the build step. Otherwise the xcassets compilation fails.

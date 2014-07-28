@@ -4,15 +4,30 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>OpenGLTest.xcscheme</key>
+		<key>OpenGL.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>Test.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>F26E0DC61893EFC300D4C163</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2F3F6A91985DE9700C8FAF4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2F3F6BB1985DE9700C8FAF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
