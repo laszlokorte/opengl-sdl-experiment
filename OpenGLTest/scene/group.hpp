@@ -21,8 +21,8 @@
 #include <SDL2/SDL_opengl.h>
 
 #define GLM_FORCE_RADIANS
-#include "../lib/glm/glm/glm.hpp"
-#include "../lib/glm/glm/gtx/vector_angle.hpp"
+#include "glm/glm.hpp"
+#include "glm/gtx/vector_angle.hpp"
 #include "../graphics/shader.hpp"
 #include "visitor/visitor_base.hpp"
 #include "component.hpp"

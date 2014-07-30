@@ -10,7 +10,7 @@
 #define __OpenGLTest__matrix_refresher__
 
 #include <stack>
-#include "../../lib/glm/glm/glm.hpp"
+#include "glm/glm.hpp"
 #include "visitor_base.hpp"
 #include "component.hpp"
 

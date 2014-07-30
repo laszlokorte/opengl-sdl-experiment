@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <iostream>
 #define glm_detail_intrinsic_integer
-#include "../lib/glm/glm/ext.hpp"
+#include "glm/ext.hpp"
 
 FirstPersonMovement::FirstPersonMovement(Camera &cam) : camera(cam)
 {

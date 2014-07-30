@@ -10,8 +10,8 @@
 #define __OpenGLTest__camera__
 
 #define GLM_FORCE_RADIANS
-#include "../lib/glm/glm/glm.hpp"
-#include "../lib/glm/glm/gtx/vector_angle.hpp"
+#include "glm/glm.hpp"
+#include "glm/gtx/vector_angle.hpp"
 
 
 class Camera {

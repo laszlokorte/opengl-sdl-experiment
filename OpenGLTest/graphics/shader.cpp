@@ -29,7 +29,7 @@ void Shader::finishRender() const {
 }
 
 Shader::Handles Shader::createProgram(const GLchar** vertexShader, const GLchar** fragmentShader, Identifiers ident) {
-    Handles h = Handles{};
+    Handles h;
     h.positionLocation = 1;
     h.colorLocation = 2;
     h.normalLocation = 3;

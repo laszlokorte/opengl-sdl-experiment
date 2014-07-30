@@ -7,7 +7,7 @@
 //
 
 #include "base.hpp"
-#include "../lib/glm/glm/glm.hpp"
+#include "glm/glm.hpp"
 #include <cmath>
 
 Mesh::Mesh(const std::vector<Vertex> _vertices, const std::vector<Triangle> _triangles) : vertices(_vertices), triangles(_triangles) {

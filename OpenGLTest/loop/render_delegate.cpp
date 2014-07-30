@@ -9,7 +9,7 @@
 #include "render_delegate.hpp"
 
 #define glm_detail_intrinsic_integer
-#include "../lib/glm/glm/glm.hpp"
+#include "glm/glm.hpp"
 
 const GLchar* vertexShaderSource[] = {
 #include "../shaders/base.vsh"

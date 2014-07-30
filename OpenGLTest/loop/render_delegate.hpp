@@ -33,7 +33,7 @@
 #include "../input/mouse_adapter.hpp"
 
 #define GLM_FORCE_RADIANS
-#include "../lib/glm/glm/glm.hpp"
+#include "glm/glm.hpp"
 
 
 class SceneDelegate : public GameLoopDelegate {

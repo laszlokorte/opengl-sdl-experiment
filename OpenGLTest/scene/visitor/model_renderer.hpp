@@ -18,7 +18,7 @@
 #include <SDL2/SDL_opengl.h>
 
 #define GLM_FORCE_RADIANS
-#include "../../lib/glm/glm/glm.hpp"
+#include "glm/glm.hpp"
 
 #include "visitor_base.hpp"
 #include "group.hpp"
