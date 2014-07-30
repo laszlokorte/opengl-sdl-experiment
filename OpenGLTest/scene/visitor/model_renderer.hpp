@@ -28,7 +28,6 @@
 class ModelRenderer : public Visitor {
 public:
     glm::mat4 projection;
-    glm::mat4 view;
 
     ~ModelRenderer();
     void visit( class Group & );

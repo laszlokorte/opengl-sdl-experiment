@@ -6,7 +6,7 @@ int
 main(int argc, char *argv[])
 {
     SceneDelegate del;
-    GameLoop loop(100, del);
+    GameLoop loop({100, true}, del);
     
     loop.start();
     

@@ -22,6 +22,7 @@ public:
     void visit(  Model & );
     void leave(  Model & );
     void refresh( Component &c,  glm::mat4 view);
+    void refresh( Component &c,  glm::mat4 view, bool force);
 
 private:
     std::stack<glm::mat4> stack;

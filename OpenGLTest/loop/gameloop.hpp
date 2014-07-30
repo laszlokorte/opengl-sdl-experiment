@@ -19,6 +19,7 @@ public:
     virtual void setViewport(int x, int y) = 0;
     virtual bool setup(GameLoop &l) = 0;
     virtual void teardown(GameLoop &l) = 0;
+    virtual void beforeUpdate(GameLoop &l) = 0;
     virtual void update(GameLoop &l) = 0;
     virtual void render() = 0;
     virtual void afterRender() const = 0;
@@ -27,9 +28,8 @@ public:
 
 class GameLoop {
     struct Config {
-        int updateRate = 60;
-        Config(int r) : updateRate(r) {}
-        Config() {}
+        int updateRate;
+        bool lockMouse;
     } conf;
     
     SDL_Window* displayWindow;
@@ -42,6 +42,8 @@ class GameLoop {
     long nanoDelta = 0;
     long renderTime = 0;
     bool running = false;
+    int windowWidth = 1000;
+    int windowHeight = 600;
     
 public:
     GameLoop(const Config &c, GameLoopDelegate &del);

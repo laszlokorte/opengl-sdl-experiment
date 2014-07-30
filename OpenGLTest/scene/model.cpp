@@ -11,9 +11,8 @@
 #include "model_renderer.hpp"
 
 
-Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl,
-                       Vertex vertices[], GLuint vCount, Triangle tris[], GLuint triCount, std::shared_ptr<Shader> shad) :
-Group(pos, rot, scl), shader(shad), vertexCount(vCount), indexCount(3*triCount)
+Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr<Shader> shad) :
+Group(pos, rot, scl), shader(shad), _indexCount(3*(GLuint)mesh.triangles.size())
 {
     // Vertex Array Object
     glGenVertexArrays(1, &vertexArray);
@@ -24,10 +23,10 @@ Group(pos, rot, scl), shader(shad), vertexCount(vCount), indexCount(3*triCount)
     glGenBuffers(1, &(buffers.Index));
 
     glBindBuffer(GL_ARRAY_BUFFER, buffers.Vertex);
-    glBufferData(GL_ARRAY_BUFFER, vertexCount * sizeof(Vertex), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, mesh.vertices.size() * sizeof(Vertex), &mesh.vertices[0], GL_STATIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers.Index);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, triCount * sizeof(Triangle), tris, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh.triangles.size() * sizeof(Triangle), &mesh.triangles[0], GL_STATIC_DRAW);
 
     // Enable vertex attributes
     glEnableVertexAttribArray(shader->handles.positionLocation);
@@ -45,13 +44,16 @@ Group(pos, rot, scl), shader(shad), vertexCount(vCount), indexCount(3*triCount)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-Model::Model(Vertex vertices[], GLuint vertexCount, Triangle tris[], GLuint triCount, std::shared_ptr<Shader> shad) :
-Model(glm::vec3(), glm::quat(), glm::vec3(1), vertices, vertexCount, tris, triCount, shad)
+Model::Model(Mesh mesh, std::shared_ptr<Shader> shad) :
+Model(glm::vec3(), glm::quat(), glm::vec3(1), mesh, shad)
 {}
 
 void Model::update() {
-    rotation = glm::rotate(rotation, glm::radians(0.8f), glm::vec3(0.f,1.f,0.f));
-    dirty = true;
+    
+};
+
+int Model::indexCount() const {
+    return _indexCount;
 };
 
 void Model::accept( Visitor &v ) {

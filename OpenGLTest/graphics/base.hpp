@@ -14,6 +14,7 @@
 #endif
 
 #include <OpenGL/gl3.h>
+#include <vector>
 
 struct Vec3 {
     GLfloat X;
@@ -45,5 +46,19 @@ struct Triangle {
     GLuint B;
     GLuint C;
 };
+
+class Mesh {
+public:
+    std::vector<Vertex> vertices;
+    std::vector<Triangle> triangles;
+    
+    Mesh(const std::vector<Vertex> vertices, const std::vector<Triangle> triangles);
+};
+
+namespace mesh {
+    Mesh makeCube();
+    Mesh makePyramid();
+    Mesh makeCylinder(unsigned int sides, float height = 2, float radius = 1);
+}
 
 #endif

@@ -16,8 +16,15 @@ MatrixRefresher::~MatrixRefresher()
 }
 
 void MatrixRefresher::refresh(Component& c, const glm::mat4 view) {
+    refresh(c, view);
+}
+
+void MatrixRefresher::refresh(Component& c, const glm::mat4 view, bool force) {
+    if(force) dirtyCount++;
+    dirtyCount++;
     stack.push(view);
     c.accept(*this);
+    if(force) dirtyCount--;
 }
 
 void MatrixRefresher::visit(Group &g )

@@ -9,6 +9,8 @@
 #ifndef __OpenGLTest__keyboard__
 #define __OpenGLTest__keyboard__
 
+#include <array>
+
 namespace keyboard {
     enum Key {
         BACKSPACE,
@@ -117,14 +119,14 @@ using keyboard::Key;
 class Keyboard {
     static const unsigned int KEYCOUNT = keyboard::OWNKNOWN;
 
-    bool keySet[KEYCOUNT];
-    bool prevKeySet[KEYCOUNT];
+    std::array<bool, KEYCOUNT> keySet;
+    std::array<bool, KEYCOUNT> prevKeySet;
 public:
     Keyboard();
-    bool isDown(Key k);
-    bool isUp(Key k);
-    bool pressed(Key k);
-    bool released(Key k);
+    bool isDown(Key k) const;
+    bool isUp(Key k) const;
+    bool pressed(Key k) const;
+    bool released(Key k) const;
     void update();
 private:
     void setKeyDown(Key k);

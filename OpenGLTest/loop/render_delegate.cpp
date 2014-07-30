@@ -8,6 +8,8 @@
 
 #include "render_delegate.hpp"
 
+#define glm_detail_intrinsic_integer
+#include "../lib/glm/glm/glm.hpp"
 
 const GLchar* vertexShaderSource[] = {
 #include "../shaders/base.vsh"
@@ -18,7 +20,7 @@ const GLchar* fragmentShaderSource[] = {
 #include "../shaders/base.fsh"
 };
 
-SceneDelegate::SceneDelegate() {
+SceneDelegate::SceneDelegate() : keyboardAdapter(keyboard), mouseAdapter(mouse), scene{.movement = FirstPersonMovement(scene.camera)} {
     
 }
 
@@ -26,88 +28,23 @@ SceneDelegate::~SceneDelegate() {
     
 }
 
+void SceneDelegate::beforeUpdate(GameLoop &l) {
+    keyboard.update();
+    mouse.update();
+}
+
 void SceneDelegate::handleEvent(SDL_Event &e) {
     switch( e.type ){
         case SDL_MOUSEBUTTONDOWN:
-            mouse.down = true;
-            scene.cube->scale = glm::vec3(1.5,1.5,1.5);
-            break;
         case SDL_MOUSEBUTTONUP:
-            scene.cube->scale = glm::vec3(1);
-            mouse.down = false;
-            break;
-        case SDL_KEYDOWN:
-            switch( e.key.keysym.sym ) {
-                case SDLK_LEFT:
-                    //movement.left = glm::vec3(0.05,0,0);
-                    break;
-                case SDLK_RIGHT:
-                    //movement.right = glm::vec3(-0.05,0,0);
-                    break;
-                case SDLK_UP:
-                    //movement.up = glm::vec3(0,-0.05,0);
-                    break;
-                case SDLK_DOWN:
-                    //movement.down = glm::vec3(0,0.05,0);
-                    break;
-                case SDLK_q:
-                    //movement.rotLeft = true;
-                    break;
-                case SDLK_e:
-                    //movement.rotRight = true;
-                    break;
-                case SDLK_w:
-                    //movement.rotDown = true;
-                    break;
-                case SDLK_s:
-                    //movement.rotUp = true;
-                    break;
-                case SDLK_SPACE:
-                    //camera.angleX = 0;
-                    //camera.angleY = 0;
-                    //camera.angleZ = 0;
-                    break;
-                    
-            }
+        case SDL_MOUSEWHEEL:
+        case SDL_MOUSEMOTION:
+            mouseAdapter.processEvent(e);
             break;
             
+        case SDL_KEYDOWN:
         case SDL_KEYUP:
-            switch( e.key.keysym.sym ) {
-                case SDLK_LEFT:
-                    //movement.left = glm::vec3(0,0,0);
-                    break;
-                case SDLK_RIGHT:
-                    //movement.right = glm::vec3(0,0,0);
-                    break;
-                case SDLK_UP:
-                    //movement.up = glm::vec3(0,0,0);
-                    break;
-                case SDLK_DOWN:
-                    //movement.down = glm::vec3(0,0,0);
-                    break;
-                case SDLK_q:
-                    //movement.rotLeft = false;
-                    break;
-                case SDLK_e:
-                    //movement.rotRight = false;
-                    break;
-                case SDLK_w:
-                    //movement.rotDown = false;
-                    break;
-                case SDLK_s:
-                    //movement.rotUp = false;
-                    break;
-                    
-            }
-            break;
-        case SDL_MOUSEWHEEL:
-            //movement.zoom += e.wheel.y / 4.f;
-            break;
-        case SDL_MOUSEMOTION:
-            mouse.dx += e.motion.xrel;
-            mouse.dy += e.motion.yrel;
-            break;
-        default:
+            keyboardAdapter.processEvent(e);
             break;
     }
 
@@ -138,47 +75,9 @@ bool SceneDelegate::setup(GameLoop &l) {
     /* The Type Of Depth Test To Do */
     glDepthFunc( GL_LEQUAL );
 
-    
 
     /* Really Nice Perspective Calculations */
     glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );
-    
-    
-    Vertex vertices[] = {
-        // Front
-        {.Position = { 1,-1, 1}, .Normal = {0,0,0}, .Color = {1, 0, 0, 1}},
-        {.Position = { 1, 1, 1}, .Normal = {0,0,0}, .Color = {1, 1, 0, 1}},
-        {.Position = {-1, 1, 1}, .Normal = {0,0,0}, .Color = {0, 1, 0, 1}},
-        {.Position = {-1,-1, 1}, .Normal = {0,0,0}, .Color = {0, 0, 0, 1}},
-        
-        // Back
-        {.Position = {-1,-1, -1}, .Normal = {0,0,0}, .Color = {0, 0, 1, 1}},
-        {.Position = {-1, 1, -1}, .Normal = {0,0,0}, .Color = {1, 0, 1, 1}},
-        {.Position = { 1, 1, -1}, .Normal = {0,0,0}, .Color = {1, 1, 1, 1}},
-        {.Position = { 1,-1, -1}, .Normal = {0,0,0}, .Color = {0, 1, 1, 1}},
-    };
-    
-    Triangle indices[] = {
-        // Front
-        {0, 1, 2},
-        {2, 3, 0},
-        // Back
-        {4, 5, 6},
-        {6, 7, 4},
-        // Left
-        {3, 2, 5},
-        {5, 4, 3},
-        // Right
-        {7, 6, 1},
-        {1, 0, 7},
-        // Top
-        {1, 6, 5},
-        {5, 2, 1},
-        // Bottom
-        {3, 4, 7},
-        {7, 0, 3},
-    };
-    
     
     try {
         scene.shader = std::make_shared<Shader>(vertexShaderSource,fragmentShaderSource);
@@ -188,26 +87,29 @@ bool SceneDelegate::setup(GameLoop &l) {
     }
     scene.root = std::make_shared<Group>();
     
-    scene.cube = std::make_shared<Model>(vertices, 8, indices, 12, scene.shader);
+    scene.cube = std::make_shared<Model>(mesh::makeCube(), scene.shader);
+    scene.cube->scale = glm::vec3(10,10,10);
     scene.root->add(scene.cube);
+    scene.cube->position = glm::vec3(0.0f,10.f,0.f);
     
-    ModelRenderer renderer;
+    auto cyl = std::make_shared<Model>(mesh::makeCylinder(40, 2, 1), scene.shader);
+    cyl->rotation = glm::rotate(glm::quat(), glm::radians(235.f), glm::vec3(0,1,0)) * glm::rotate(glm::quat(), glm::radians(90.f), glm::vec3(1,0,0));
+    cyl->scale = glm::vec3(5,5,5);
+    cyl->position = glm::vec3(7.0f,5.f,30.f);
     
-    scene.renderer = renderer;
+    scene.root->add(cyl);
     
-    scene.renderer.projection = glm::perspective(glm::radians(75.0f),16/9.0f,0.1f, 100.0f);
-    scene.renderer.view =  glm::lookAt(
-                                       glm::vec3(0.f,2.f,3.f),
-                                       glm::vec3(0.f,0.f,0.f),
-                                       glm::vec3(0.f,1.f,0.f)
-                                       );
+    auto pyr = std::make_shared<Model>(mesh::makePyramid(), scene.shader);
+    pyr->scale = glm::vec3(10,10,10);
+    pyr->position = glm::vec3(-23.0f,10.f,30.f);
     
-    
-    scene.cube->position = glm::vec3(0.0f,0.f,0.f);
-    scene.cube->scale = glm::vec3(0.9,0.9,0.9);
-    scene.cube->rotation = glm::rotate(glm::quat(), glm::radians(135.f), glm::vec3(0,1,0));
+    scene.root->add(pyr);
    
-
+    
+    scene.renderer.projection = glm::perspective(glm::radians(65.0f),16/9.0f,2.f, 200.0f);
+    scene.camera.position = glm::vec3(40.f,0.f,21.f);
+    scene.movement.lookAt(glm::vec3(0,0,20));
+    
     return true;
 }
 
@@ -215,8 +117,71 @@ void SceneDelegate::teardown(GameLoop &l) {
 }
 
 void SceneDelegate::update(GameLoop &l) {
+    glm::vec2 dir(0,0);
+    
+    if(keyboard.isDown(keyboard::LEFT_ARROW) || keyboard.isDown(keyboard::LETTER_A)) {
+        dir.x+=1;
+    }
+    if(keyboard.isDown(keyboard::RIGHT_ARROW) || keyboard.isDown(keyboard::LETTER_D)) {
+        dir.x-=1;
+    }
+    
+    if(keyboard.isDown(keyboard::UP_ARROW) || keyboard.isDown(keyboard::LETTER_W)) {
+        dir.y+=1;
+    }
+    if(keyboard.isDown(keyboard::DOWN_ARROW) || keyboard.isDown(keyboard::LETTER_S)) {
+        dir.y-=1;
+    }
+    
+    if(glm::length(dir)) {
+        if(moveDelay<0.25) {
+            moveDelay+=0.02;
+        }
+    } else if(moveDelay>0) {
+        moveDelay-=0.02;
+    }
+    
+    scene.movement.move(dir, moveDelay);
+    
+    if(keyboard.isDown(keyboard::ENTER)) {
+        scene.movement.lookAt(glm::vec3(0,0,0));
+    }
+    
+    if(mouse.delta.x != 0) {
+        scene.movement.rotateHorizontally(glm::radians(.3f*mouse.delta.x));
+    }
+    if(mouse.delta.y != 0) {
+        scene.movement.rotateVertically(glm::radians(.3f*mouse.delta.y));
+    }
+    
+    
+    int camHeight = 5;
+    if(physic.position.y == camHeight) {
+        if(keyboard.pressed(keyboard::SPACE)) {
+            physic.velocity.y = 0.25;
+        } else {
+            physic.velocity *= 0.9;
+        }
+    } else {
+    
+    }
+    
+    
+    physic.position = scene.camera.position;
+    
+    physic.velocity += .001f*physic.acceleration;
+    physic.position += physic.velocity;
+    
+    if(physic.position.y < camHeight) {
+        physic.position.y = camHeight;
+        physic.velocity.y = 0;
+    }
+    
+    scene.camera.position = physic.position;
+    scene.camera.dirty = true;
+    
     updater.update(*scene.root);
-    refresher.refresh(*scene.root, scene.renderer.view);
+    refresher.refresh(*scene.root, scene.camera.viewMatrix(), true);
 }
 
 void SceneDelegate::render() {

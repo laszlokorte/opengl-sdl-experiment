@@ -29,16 +29,16 @@ class Model : public Group {
         GLuint Vertex;
         GLuint Index;
     } buffers;
-    GLuint vertexCount;
-    GLuint indexCount;
+    const int _indexCount;
     const GLenum glType = GL_UNSIGNED_INT;
     std::shared_ptr<Shader> shader;
 public:
-    Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl,
-               Vertex vertices[], GLuint vCount, Triangle tris[], GLuint triCount, std::shared_ptr<Shader> shad);
+    Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr<Shader> shad);
     
-    Model(Vertex vertices[], GLuint vertexCount, Triangle tris[], GLuint triCount, std::shared_ptr<Shader> shad);
-        
+    Model(Mesh mesh, std::shared_ptr<Shader> shad);
+    
+    int indexCount() const;
+    
     virtual void update();
     
     void accept( Visitor & );

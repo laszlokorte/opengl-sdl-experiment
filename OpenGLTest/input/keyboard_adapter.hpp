@@ -10,7 +10,7 @@
 #define __OpenGLTest__keyboard_adapter__
 
 #import <SDL2/SDL.h>
-#import "keyboard.h"
+#import "keyboard.hpp"
 
 class KeyboardAdapter {
     Keyboard &keyboard;
@@ -18,7 +18,7 @@ class KeyboardAdapter {
 public:
     KeyboardAdapter(Keyboard &k);
     
-    void processEvent(const SDL_Event &e);
+    void processEvent(const SDL_Event &e) const;
     
     keyboard::Key mapKey(const int) const;
 };

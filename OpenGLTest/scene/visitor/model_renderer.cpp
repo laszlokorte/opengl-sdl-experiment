@@ -44,7 +44,7 @@ void ModelRenderer::renderModel(const Model &model) const {
     }
 
     glBindVertexArray(model.vertexArray);
-    glDrawElements(GL_TRIANGLES, model.indexCount, model.glType, (void*)0);
+    glDrawElements(GL_TRIANGLES, model.indexCount(), model.glType, (void*)0);
 
     glBindVertexArray(0);
 

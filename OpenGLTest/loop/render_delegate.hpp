@@ -22,6 +22,16 @@
 #include "../scene/visitor/matrix_refresher.hpp"
 #include "../scene/visitor/updater.hpp"
 
+#include "../camera/camera.hpp"
+#include "../camera/first_person.hpp"
+
+
+#include "../input/keyboard.hpp"
+#include "../input/keyboard_adapter.hpp"
+
+#include "../input/mouse.hpp"
+#include "../input/mouse_adapter.hpp"
+
 #define GLM_FORCE_RADIANS
 #include "../lib/glm/glm/glm.hpp"
 
@@ -32,18 +42,28 @@ class SceneDelegate : public GameLoopDelegate {
         int height = 600;
     } screen;
     
-    struct {
-        int dx = 0;
-        int dy = 0;
-        bool down = false;
-    } mouse;
+    Keyboard keyboard;
+    const KeyboardAdapter keyboardAdapter;
+    
+    Mouse mouse;
+    const MouseAdapter mouseAdapter;
     
     struct {
         std::shared_ptr<Group> root;
         std::shared_ptr<Model> cube;
+        Camera camera;
+        FirstPersonMovement movement;
         ModelRenderer renderer;
         std::shared_ptr<Shader> shader;
     } scene;
+    
+    struct {
+        glm::vec3 position;
+        glm::vec3 velocity;
+        glm::vec3 acceleration{0,-9,0};
+    } physic;
+    
+    float moveDelay;
     
     MatrixRefresher refresher;
     Updater updater;
@@ -59,8 +79,10 @@ public:
     
     void teardown(GameLoop &l);
     
+    void beforeUpdate(GameLoop &l);
+
     void update(GameLoop &l);
-    
+
     void render();
     
     void afterRender() const;
