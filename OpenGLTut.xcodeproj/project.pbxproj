@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F2670B6519892BD300FF11A6 /* base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2670B6419892BD300FF11A6 /* base.cpp */; };
-		F291C98619860231006EBD70 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F291C98519860231006EBD70 /* SDL2.framework */; };
-		F2D5995019897DDB008287FB /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F291C98519860231006EBD70 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F268B9191989A60700577209 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F291C98519860231006EBD70 /* SDL2.framework */; };
 		F2D9B9E3198633D40052836B /* gameloop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9E2198633D40052836B /* gameloop.cpp */; };
 		F2D9B9E7198645120052836B /* render_delegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9E41986396B0052836B /* render_delegate.cpp */; };
 		F2D9B9ED1986575B0052836B /* component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9EB1986575B0052836B /* component.cpp */; };
@@ -32,16 +31,17 @@
 		F2F3F6CF1985DF0700C8FAF4 /* opengl_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F771985C6BF00102679 /* opengl_utils.cpp */; };
 		F2F3F6D01985DF1A00C8FAF4 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F801985C86900102679 /* shader.cpp */; };
 		F2F3F6D91985DFF500C8FAF4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E13331893F7B700D4C163 /* OpenGL.framework */; };
+		F2F508511989A579000B3F12 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F291C98519860231006EBD70 /* SDL2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		F2D5995119897DDC008287FB /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F2D5995019897DDB008287FB /* SDL2.framework in Embed Frameworks */,
+				F268B9191989A60700577209 /* SDL2.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,7 +94,7 @@
 		F2DE3F841985C9C300102679 /* group.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = group.hpp; sourceTree = "<group>"; };
 		F2DE3F861985C9DD00102679 /* model.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = model.cpp; sourceTree = "<group>"; };
 		F2DE3F871985C9DD00102679 /* model.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = model.hpp; sourceTree = "<group>"; };
-		F2F3F6AA1985DE9700C8FAF4 /* OpenGLTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2F3F6AA1985DE9700C8FAF4 /* OpenGLTut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLTut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F3F6D11985DF5A00C8FAF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2F3F6D91985DFF500C8FAF4 /* OpenGL.framework in Frameworks */,
-				F291C98619860231006EBD70 /* SDL2.framework in Frameworks */,
+				F2F508511989A579000B3F12 /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +124,7 @@
 		F26E0DC81893EFC300D4C163 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F2F3F6AA1985DE9700C8FAF4 /* OpenGLTest.app */,
+				F2F3F6AA1985DE9700C8FAF4 /* OpenGLTut.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -256,9 +256,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F2F3F6A91985DE9700C8FAF4 /* OpenGL */ = {
+		F2F3F6A91985DE9700C8FAF4 /* Debug */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F2F3F6C41985DE9700C8FAF4 /* Build configuration list for PBXNativeTarget "OpenGL" */;
+			buildConfigurationList = F2F3F6C41985DE9700C8FAF4 /* Build configuration list for PBXNativeTarget "Debug" */;
 			buildPhases = (
 				F2F3F6A61985DE9700C8FAF4 /* Sources */,
 				F2F3F6A71985DE9700C8FAF4 /* Frameworks */,
@@ -269,9 +269,9 @@
 			);
 			dependencies = (
 			);
-			name = OpenGL;
+			name = Debug;
 			productName = Test;
-			productReference = F2F3F6AA1985DE9700C8FAF4 /* OpenGLTest.app */;
+			productReference = F2F3F6AA1985DE9700C8FAF4 /* OpenGLTut.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -288,7 +288,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F26E0DC21893EFC300D4C163 /* Build configuration list for PBXProject "OpenGLTest" */;
+			buildConfigurationList = F26E0DC21893EFC300D4C163 /* Build configuration list for PBXProject "OpenGLTut" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -301,7 +301,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F2F3F6A91985DE9700C8FAF4 /* OpenGL */,
+				F2F3F6A91985DE9700C8FAF4 /* Debug */,
 			);
 		};
 /* End PBXProject section */
@@ -364,6 +364,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Laszlo Korte";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -403,6 +404,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Laszlo Korte";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -448,6 +450,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				PRODUCT_NAME = OpenGLTut;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/lib/glm/";
 			};
 			name = Debug;
@@ -475,6 +478,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				PRODUCT_NAME = OpenGLTut;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/lib/glm/";
 			};
 			name = Release;
@@ -482,7 +486,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F26E0DC21893EFC300D4C163 /* Build configuration list for PBXProject "OpenGLTest" */ = {
+		F26E0DC21893EFC300D4C163 /* Build configuration list for PBXProject "OpenGLTut" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F26E0DCE1893EFC300D4C163 /* Debug */,
@@ -491,7 +495,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F2F3F6C41985DE9700C8FAF4 /* Build configuration list for PBXNativeTarget "OpenGL" */ = {
+		F2F3F6C41985DE9700C8FAF4 /* Build configuration list for PBXNativeTarget "Debug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F2F3F6C51985DE9700C8FAF4 /* Debug */,
