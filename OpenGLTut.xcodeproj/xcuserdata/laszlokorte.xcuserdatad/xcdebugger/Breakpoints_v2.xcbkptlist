@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
             endingLineNumber = "14"
-            landmarkName = "Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr&lt;Shader&gt; shad, std::shared_ptr&lt;Texture&gt; tex)"
+            landmarkName = "Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr&lt;Shader&gt; shad, std::shared_ptr&lt;Material&gt; mat)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenGLTest/graphics/shader.hpp"
-            timestampString = "428225125.932879"
+            timestampString = "428531190.426993"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "error(err)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenGLTest/loop/render_delegate.cpp"
-            timestampString = "428512851.776353"
+            timestampString = "428542094.711372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "SceneDelegate::setup(GameLoop &amp;l)"
             landmarkType = "5">
          </BreakpointContent>
@@ -278,11 +278,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenGLTest/loop/render_delegate.cpp"
-            timestampString = "428525793.297243"
+            timestampString = "428542094.711372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "SceneDelegate::update(GameLoop &amp;l)"
             landmarkType = "5">
          </BreakpointContent>
@@ -309,29 +309,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpenGLTest/graphics/base.cpp"
-            timestampString = "428525478.441338"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "Mesh::Mesh(const std::vector&lt;Vertex&gt; _vertices, const std::vector&lt;Triangle&gt; _triangles)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "OpenGLTest/scene/model.cpp"
             timestampString = "428421028.52628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr&lt;Shader&gt; shad, std::shared_ptr&lt;Texture&gt; tex)"
+            landmarkName = "Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr&lt;Shader&gt; shad, std::shared_ptr&lt;Material&gt; mat)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

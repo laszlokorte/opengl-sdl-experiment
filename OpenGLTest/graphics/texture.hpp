@@ -12,13 +12,14 @@
 #include <stdio.h>
 
 class Texture {
-    const GLuint textureID;
+    GLuint textureID;
 public:
     explicit Texture(std::string path);
+    Texture(Texture&& t);
     Texture();
     ~Texture();
     
-    void prepareRender(const GLuint uniformHandle) const;
+    void prepareRender(const GLuint uniformHandle, GLenum texIndex) const;
     
     void finishRender() const;
     

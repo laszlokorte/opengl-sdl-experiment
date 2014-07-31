@@ -14,11 +14,8 @@ ModelRenderer::ModelRenderer()
 {
     light.color = ColorRGB{1.f,1.f,1.f};
     light.ambientIntensity = 0.5;
-    light.diffuseIntensity = 1.1;
+    light.diffuseIntensity = 1.5;
     light.position = Vec3{30,15,15};
-    
-    material.shininess = 10.3;
-    material.specularIntensity = 1.6;
 }
 
 ModelRenderer::~ModelRenderer()
@@ -53,8 +50,7 @@ void ModelRenderer::renderModel(const Model &model) const {
     glUniformMatrix4fv(model.shader->handles.projectionMatrixUniform, 1, GL_FALSE, &projection[0][0]);
     glUniform3f(model.shader->handles.cameraPositionUniform, cameraPosition.X, cameraPosition.Y, cameraPosition.Z);
         
-    model.texture->prepareRender(model.shader->handles.textureUniform);
-    material.prepareRender(model.shader->handles.material);
+    model.material->prepareRender(model.shader->handles.material);
     light.prepareRender(model.shader->handles.light);
     
     
@@ -69,10 +65,9 @@ void ModelRenderer::renderModel(const Model &model) const {
     glBindVertexArray(0);
 
     light.finishRender(model.shader->handles.light);
-    material.finishRender(model.shader->handles.material);
 
     
-    model.texture->finishRender();
+    model.material->finishRender(model.shader->handles.material);
     model.shader->finishRender();
 }
 

@@ -21,6 +21,7 @@
 #include "glm/glm.hpp"
 #include "../graphics/shader.hpp"
 #include "../graphics/texture.hpp"
+#include "../graphics/material.hpp"
 
 #include "group.hpp"
 
@@ -33,13 +34,11 @@ class Model : public Group {
     const int _indexCount;
     const GLenum glType = GL_UNSIGNED_INT;
     std::shared_ptr<Shader> shader;
-    std::shared_ptr<Texture> texture;
+    std::shared_ptr<Material> material;
 public:
-    Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr<Shader> shad, std::shared_ptr<Texture> tex);
+    Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr<Shader> shad, std::shared_ptr<Material> mat);
 
-    Model(Mesh mesh, std::shared_ptr<Shader> shad, std::shared_ptr<Texture> texture);
-
-    Model(Mesh mesh, std::shared_ptr<Shader> shad);
+    Model(Mesh mesh, std::shared_ptr<Shader> shad, std::shared_ptr<Material> mat);
     
     int indexCount() const;
     

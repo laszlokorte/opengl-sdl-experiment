@@ -19,6 +19,7 @@
 #include <OpenGL/gl3.h>
 #include <SDL2/SDL_opengl.h>
 #include "base.hpp"
+#include "material.hpp"
 
 class ShaderException : public std::exception {
 public:
@@ -43,7 +44,6 @@ class Shader {
         GLuint modelMatrixUniform = -1;
         GLuint viewMatrixUniform = -1;
         GLuint projectionMatrixUniform = -1;
-        GLuint textureUniform = -1;
         GLuint cameraPositionUniform = -1;
         
         LightHandle light;
@@ -72,7 +72,9 @@ public:
         } light;
         
         struct {
-            const char* specularIntensity = "uMaterial.specularIntensity";
+            const char* diffuserColor = "uMaterial.diffuseColor";
+            const char* emittingColor = "uMaterial.emittingColor";
+            const char* specularColor = "uMaterial.specularColor";
             const char* shininess = "uMaterial.shininess";
         } material;
     } identifiers;

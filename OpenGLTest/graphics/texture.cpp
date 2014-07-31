@@ -21,9 +21,15 @@ Texture::Texture(std::string path) : textureID(loadImageFile(path))
 {
 }
 
-Texture::Texture() : textureID(0)
+Texture::Texture()
 {
 }
+
+Texture::Texture(Texture&& t) : textureID(t.textureID)
+{
+    t.textureID = 0;
+}
+
 
 Texture::~Texture()
 {
@@ -75,11 +81,11 @@ GLuint Texture::loadImageFile(std::string path) const
     return id;
 }
 
-void Texture::prepareRender(const GLuint uniformHandle) const {
+void Texture::prepareRender(const GLuint uniformHandle, GLenum texIndex) const {
     if(textureID) {
-        glActiveTexture(GL_TEXTURE1);
+        glActiveTexture(texIndex);
         glBindTexture(GL_TEXTURE_2D, textureID);
-        glUniform1i(uniformHandle,1);
+        glUniform1i(uniformHandle,texIndex - GL_TEXTURE0);
     }
 }
 

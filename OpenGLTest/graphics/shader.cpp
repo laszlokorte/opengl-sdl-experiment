@@ -78,7 +78,7 @@ Shader::Handles Shader::createProgram(const GLchar** vertexShader, const GLchar*
     h.modelMatrixUniform = glGetUniformLocation(h.program, ident.uniformModelMatrix);
     h.viewMatrixUniform = glGetUniformLocation(h.program, ident.uniformViewMatrix);
     h.projectionMatrixUniform = glGetUniformLocation(h.program, ident.uniformProjectionMatrix);
-    h.textureUniform = glGetUniformLocation(h.program, ident.uniformTexture);
+   // h.textureUniform = glGetUniformLocation(h.program, ident.uniformTexture);
 
     h.cameraPositionUniform = glGetUniformLocation(h.program, ident.cameraPosition);
 
@@ -87,8 +87,12 @@ Shader::Handles Shader::createProgram(const GLchar** vertexShader, const GLchar*
     h.light.ambientIntensityUniform = glGetUniformLocation(h.program, ident.light.ambientIntensity);
     h.light.diffuseIntensityUniform = glGetUniformLocation(h.program, ident.light.diffuseIntensity);
 
-    h.material.specularIntensityUniform = glGetUniformLocation(h.program, ident.material.specularIntensity);
+    h.material.diffuseColorUniform = glGetUniformLocation(h.program, ident.material.diffuserColor);
+    h.material.specularColorUniform = glGetUniformLocation(h.program, ident.material.specularColor);
+    h.material.emittigColorUniform = glGetUniformLocation(h.program, ident.material.emittingColor);
     h.material.shininessUniform = glGetUniformLocation(h.program, ident.material.shininess);
+    
+
 
     
     glDeleteProgram(vsh);

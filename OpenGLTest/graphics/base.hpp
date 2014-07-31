@@ -60,11 +60,6 @@ struct LightHandle {
     GLuint diffuseIntensityUniform = -1;
 };
 
-struct MaterialHandle {
-    GLuint shininessUniform = -1;
-    GLuint specularIntensityUniform = -1;
-};
-
 class Light {
 public:
     ColorRGB color;
@@ -74,16 +69,6 @@ public:
     void prepareRender(const LightHandle &h) const;
     void finishRender(const LightHandle &h) const;
 };
-
-class Material {
-public:
-
-    float shininess;
-    float specularIntensity;
-    void prepareRender(const MaterialHandle &h) const;
-    void finishRender(const MaterialHandle &h) const;
-};
-
 
 class Mesh {
 public:

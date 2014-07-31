@@ -21,17 +21,6 @@ void Light::prepareRender(const LightHandle &h) const
 }
 void Light::finishRender(const LightHandle &h) const {}
 
-void Material::prepareRender(const MaterialHandle &h) const
-{
-    glUniform1f(h.shininessUniform, shininess);
-    glUniform1f(h.specularIntensityUniform, specularIntensity);
-}
-
-void Material::finishRender(const MaterialHandle &h) const {}
-
-Mesh::Mesh(const std::vector<Vertex> _vertices, const std::vector<Triangle> _triangles) : vertices(_vertices), triangles(_triangles) {
-    
-}
 
 namespace mesh {
     Mesh makeCube() {
@@ -166,4 +155,9 @@ namespace mesh {
         
         return Mesh(vertices, triangles);
     }
+}
+
+Mesh::Mesh(const std::vector<Vertex> _vertices, const std::vector<Triangle> _triangles) : vertices(_vertices), triangles(_triangles) {
+    
+    
 }
