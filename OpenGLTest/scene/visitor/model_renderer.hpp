@@ -28,7 +28,12 @@
 class ModelRenderer : public Visitor {
 public:
     glm::mat4 projection;
+    glm::mat4 viewMatrix;
+    Light light;
+    Material material;
+    Vec3 cameraPosition;
 
+    ModelRenderer();
     ~ModelRenderer();
     void visit( class Group & );
     void leave( class Group & );

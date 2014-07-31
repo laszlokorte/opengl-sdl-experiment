@@ -53,9 +53,10 @@ class SceneDelegate : public GameLoopDelegate {
         std::shared_ptr<Model> cube;
         Camera camera;
         FirstPersonMovement movement;
-        ModelRenderer renderer;
         std::shared_ptr<Shader> shader;
     } scene;
+    
+    ModelRenderer renderer;
     
     struct {
         glm::vec3 position;

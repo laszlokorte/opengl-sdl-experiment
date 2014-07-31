@@ -7,6 +7,8 @@
 //
 
 #include "render_delegate.hpp"
+#include "../graphics/texture.hpp"
+
 
 #define glm_detail_intrinsic_integer
 #include "glm/glm.hpp"
@@ -25,7 +27,7 @@ SceneDelegate::SceneDelegate() : keyboardAdapter(keyboard), mouseAdapter(mouse),
 }
 
 SceneDelegate::~SceneDelegate() {
-    
+
 }
 
 void SceneDelegate::beforeUpdate(GameLoop &l) {
@@ -66,6 +68,8 @@ bool SceneDelegate::setup(GameLoop &l) {
     /* Depth buffer setup */
     glClearDepth( 1.0f );
     
+    glEnable(GL_TEXTURE_2D);
+    
     glEnable(GL_CULL_FACE);
     glEnable( GL_BLEND );
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -87,7 +91,11 @@ bool SceneDelegate::setup(GameLoop &l) {
     }
     scene.root = std::make_shared<Group>();
     
-    scene.cube = std::make_shared<Model>(mesh::makeCube(), scene.shader);
+    std::string path = std::string(SDL_GetBasePath()) + "texture.png";
+            
+    auto t = std::make_shared<Texture>(path);
+
+    scene.cube = std::make_shared<Model>(mesh::makeCube(), scene.shader, t);
     scene.cube->scale = glm::vec3(10,10,10);
     scene.root->add(scene.cube);
     scene.cube->position = glm::vec3(0.0f,10.f,0.f);
@@ -106,7 +114,7 @@ bool SceneDelegate::setup(GameLoop &l) {
     scene.root->add(pyr);
    
     
-    scene.renderer.projection = glm::perspective(glm::radians(65.0f),16/9.0f,2.f, 200.0f);
+    renderer.projection = glm::perspective(glm::radians(65.0f),16/9.0f,2.f, 400.0f);
     scene.camera.position = glm::vec3(40.f,0.f,21.f);
     scene.movement.lookAt(glm::vec3(0,0,20));
     
@@ -181,7 +189,7 @@ void SceneDelegate::update(GameLoop &l) {
     scene.camera.dirty = true;
     
     updater.update(*scene.root);
-    refresher.refresh(*scene.root, scene.camera.viewMatrix(), true);
+    refresher.refresh(*scene.root, true);
 }
 
 void SceneDelegate::render() {
@@ -191,7 +199,11 @@ void SceneDelegate::render() {
     glClearColor( .1f, .1f, .1f, 0 );
     /* Clear The Screen And The Depth Buffer */
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-    scene.root->accept(scene.renderer);
+    renderer.viewMatrix = scene.camera.viewMatrix();
+    renderer.cameraPosition.X = scene.camera.position.x;
+    renderer.cameraPosition.Y = scene.camera.position.y;
+    renderer.cameraPosition.Z = scene.camera.position.z;
+    scene.root->accept(renderer);
 }
 
 void SceneDelegate::afterRender() const {

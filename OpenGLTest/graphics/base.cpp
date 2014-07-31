@@ -9,27 +9,68 @@
 #include "base.hpp"
 #include "glm/glm.hpp"
 #include <cmath>
+#include <iostream>
+
+
+void Light::prepareRender(const LightHandle &h) const
+{
+    glUniform3f(h.colorUniform, color.R, color.G, color.B);
+    glUniform1f(h.ambientIntensityUniform, ambientIntensity);
+    glUniform3f(h.positionUniform, position.X, position.Y, position.Z);
+    glUniform1f(h.diffuseIntensityUniform, diffuseIntensity);
+}
+void Light::finishRender(const LightHandle &h) const {}
+
+void Material::prepareRender(const MaterialHandle &h) const
+{
+    glUniform1f(h.shininessUniform, shininess);
+    glUniform1f(h.specularIntensityUniform, specularIntensity);
+}
+
+void Material::finishRender(const MaterialHandle &h) const {}
 
 Mesh::Mesh(const std::vector<Vertex> _vertices, const std::vector<Triangle> _triangles) : vertices(_vertices), triangles(_triangles) {
     
-    vertices.size();
 }
-
 
 namespace mesh {
     Mesh makeCube() {
         std::vector<Vertex> vertices = {
             // Front
-            {.Position = { 1,-1, 1}, .Normal = {0,0,0}, .Color = {0, 1, 0, 1}},
-            {.Position = { 1, 1, 1}, .Normal = {0,0,0}, .Color = {1, 1, 0, 1}},
-            {.Position = {-1, 1, 1}, .Normal = {0,0,0}, .Color = {1, 0, 0, 1}},
-            {.Position = {-1,-1, 1}, .Normal = {0,0,0}, .Color = {0, 0, 0, 1}},
+            {.Position = { 1,-1, 1}, .Normal = {0,0,1}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,1}},
+            {.Position = { 1, 1, 1}, .Normal = {0,0,1}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,0}},
+            {.Position = {-1, 1, 1}, .Normal = {0,0,1}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,0}},
+            {.Position = {-1,-1, 1}, .Normal = {0,0,1}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,1}},
             
             // Back
-            {.Position = {-1,-1, -1}, .Normal = {0,0,0}, .Color = {0, 0, 1, 1}},
-            {.Position = {-1, 1, -1}, .Normal = {0,0,0}, .Color = {1, 0, 1, 1}},
-            {.Position = { 1, 1, -1}, .Normal = {0,0,0}, .Color = {1, 1, 1, 1}},
-            {.Position = { 1,-1, -1}, .Normal = {0,0,0}, .Color = {0, 1, 1, 1}},
+            {.Position = {-1,-1, -1}, .Normal = {0,0,-1}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,1}},
+            {.Position = {-1, 1, -1}, .Normal = {0,0,-1}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,0}},
+            {.Position = { 1, 1, -1}, .Normal = {0,0,-1}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,0}},
+            {.Position = { 1,-1, -1}, .Normal = {0,0,-1}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,1}},
+            
+            // Left
+            {.Position = {-1,-1, 1}, .Normal = {-1,0,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,1}},
+            {.Position = {-1, 1, 1}, .Normal = {-1,0,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,0}},
+            {.Position = {-1, 1, -1}, .Normal = {-1,0,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,0}},
+            {.Position = {-1,-1, -1}, .Normal = {-1,0,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,1}},
+            
+            // Right
+            {.Position = { 1,-1, -1}, .Normal = {1,0,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,1}},
+            {.Position = { 1, 1, -1}, .Normal = {1,0,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,0}},
+            {.Position = { 1, 1, 1}, .Normal = {1,0,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,0}},
+            {.Position = { 1,-1, 1}, .Normal = {1,0,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,1}},
+
+            // Top
+            {.Position = { 1, 1, -1}, .Normal = {0,1,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,1}},
+            {.Position = {-1, 1, -1}, .Normal = {0,1,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,1}},
+            {.Position = {-1, 1, 1}, .Normal = {0,1,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,0}},
+            {.Position = { 1, 1, 1}, .Normal = {0,1,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,0}},
+
+            // Bottom
+            {.Position = {-1,-1,  1}, .Normal = {0,-1,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,1}},
+            {.Position = {-1,-1, -1}, .Normal = {0,-1,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {1,0}},
+            {.Position = { 1,-1, -1}, .Normal = {0,-1,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,0}},
+            {.Position = { 1,-1,  1}, .Normal = {0,-1,0}, .Color = {1, 1, 1, 1}, .TextureCoord = {0,1}},
         };
         
         std::vector<Triangle> triangles = {
@@ -40,17 +81,17 @@ namespace mesh {
             {4, 5, 6},
             {6, 7, 4},
             // Left
-            {3, 2, 5},
-            {5, 4, 3},
+            {8, 9, 10},
+            {10, 11, 8},
             // Right
-            {7, 6, 1},
-            {1, 0, 7},
+            {12, 13, 14},
+            {14, 15, 12},
             // Top
-            {1, 6, 5},
-            {5, 2, 1},
+            {16, 17, 18},
+            {18, 19, 16},
             // Bottom
-            {3, 4, 7},
-            {7, 0, 3},
+            {20, 21, 22},
+            {22, 23, 20},
         };
         
         return Mesh(vertices, triangles);

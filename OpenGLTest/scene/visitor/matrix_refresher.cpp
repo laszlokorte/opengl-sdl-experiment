@@ -15,14 +15,14 @@ MatrixRefresher::~MatrixRefresher()
 {
 }
 
-void MatrixRefresher::refresh(Component& c, const glm::mat4 view) {
-    refresh(c, view);
+void MatrixRefresher::refresh(Component& c) {
+    refresh(c, false);
 }
 
-void MatrixRefresher::refresh(Component& c, const glm::mat4 view, bool force) {
+void MatrixRefresher::refresh(Component& c, bool force) {
     if(force) dirtyCount++;
     dirtyCount++;
-    stack.push(view);
+    stack.push(glm::mat4(1));
     c.accept(*this);
     if(force) dirtyCount--;
 }

@@ -11,8 +11,8 @@
 #include "model_renderer.hpp"
 
 
-Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr<Shader> shad) :
-Group(pos, rot, scl), shader(shad), _indexCount(3*(GLuint)mesh.triangles.size())
+Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr<Shader> shad, std::shared_ptr<Texture> tex) :
+Group(pos, rot, scl), shader(shad), _indexCount(3*(GLuint)mesh.triangles.size()), texture(tex)
 {
     // Vertex Array Object
     glGenVertexArrays(1, &vertexArray);
@@ -38,14 +38,21 @@ Group(pos, rot, scl), shader(shad), _indexCount(3*(GLuint)mesh.triangles.size())
     glEnableVertexAttribArray(shader->handles.colorLocation);
     glVertexAttribPointer(shader->handles.colorLocation, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *) offsetof(Vertex, Color));
 
+    glEnableVertexAttribArray(shader->handles.texCoordLocation);
+    glVertexAttribPointer(shader->handles.texCoordLocation, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *) offsetof(Vertex, TextureCoord));
+
 
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
+Model::Model(Mesh mesh, std::shared_ptr<Shader> shad, std::shared_ptr<Texture> tex) :
+Model(glm::vec3(), glm::quat(), glm::vec3(1), mesh, shad, tex)
+{}
+
 Model::Model(Mesh mesh, std::shared_ptr<Shader> shad) :
-Model(glm::vec3(), glm::quat(), glm::vec3(1), mesh, shad)
+Model(glm::vec3(), glm::quat(), glm::vec3(1), mesh, shad, std::make_shared<Texture>())
 {}
 
 void Model::update() {

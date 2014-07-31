@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F20B0F89198A527700D87E8B /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20B0F88198A527700D87E8B /* SDL2_image.framework */; };
+		F20B0F8A198A529C00D87E8B /* SDL2_image.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F20B0F88198A527700D87E8B /* SDL2_image.framework */; };
+		F20B0F8D198A537500D87E8B /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F20B0F8B198A537500D87E8B /* texture.cpp */; };
+		F20B0F90198A55AF00D87E8B /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = F20B0F8F198A55AF00D87E8B /* texture.png */; };
 		F2670B6519892BD300FF11A6 /* base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2670B6419892BD300FF11A6 /* base.cpp */; };
 		F268B9191989A60700577209 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F291C98519860231006EBD70 /* SDL2.framework */; };
 		F2D9B9E3198633D40052836B /* gameloop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9E2198633D40052836B /* gameloop.cpp */; };
@@ -41,6 +45,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F20B0F8A198A529C00D87E8B /* SDL2_image.framework in Embed Frameworks */,
 				F268B9191989A60700577209 /* SDL2.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -49,6 +54,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F20B0F88198A527700D87E8B /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
+		F20B0F8B198A537500D87E8B /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
+		F20B0F8C198A537500D87E8B /* texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
+		F20B0F8F198A55AF00D87E8B /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
 		F2670B6419892BD300FF11A6 /* base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base.cpp; sourceTree = "<group>"; };
 		F26E0DCA1893EFC300D4C163 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F26E13331893F7B700D4C163 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -105,15 +114,25 @@
 			files = (
 				F2F3F6D91985DFF500C8FAF4 /* OpenGL.framework in Frameworks */,
 				F2F508511989A579000B3F12 /* SDL2.framework in Frameworks */,
+				F20B0F89198A527700D87E8B /* SDL2_image.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F20B0F8E198A55AF00D87E8B /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				F20B0F8F198A55AF00D87E8B /* texture.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		F26E0DBE1893EFC300D4C163 = {
 			isa = PBXGroup;
 			children = (
+				F20B0F88198A527700D87E8B /* SDL2_image.framework */,
 				F291C98519860231006EBD70 /* SDL2.framework */,
 				F26E13331893F7B700D4C163 /* OpenGL.framework */,
 				F26E0DC91893EFC300D4C163 /* OpenGLTest */,
@@ -132,6 +151,7 @@
 		F26E0DC91893EFC300D4C163 /* OpenGLTest */ = {
 			isa = PBXGroup;
 			children = (
+				F20B0F8E198A55AF00D87E8B /* resources */,
 				F2D9BA0D1987F9BD0052836B /* camera */,
 				F2DE3F761985C67A00102679 /* utils */,
 				F2DE3F7E1985C7EE00102679 /* graphics */,
@@ -238,6 +258,8 @@
 				F2670B6419892BD300FF11A6 /* base.cpp */,
 				F2DE3F801985C86900102679 /* shader.cpp */,
 				F2DE3F811985C86900102679 /* shader.hpp */,
+				F20B0F8B198A537500D87E8B /* texture.cpp */,
+				F20B0F8C198A537500D87E8B /* texture.hpp */,
 			);
 			path = graphics;
 			sourceTree = "<group>";
@@ -256,9 +278,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F2F3F6A91985DE9700C8FAF4 /* Debug */ = {
+		F2F3F6A91985DE9700C8FAF4 /* OSX App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F2F3F6C41985DE9700C8FAF4 /* Build configuration list for PBXNativeTarget "Debug" */;
+			buildConfigurationList = F2F3F6C41985DE9700C8FAF4 /* Build configuration list for PBXNativeTarget "OSX App" */;
 			buildPhases = (
 				F2F3F6A61985DE9700C8FAF4 /* Sources */,
 				F2F3F6A71985DE9700C8FAF4 /* Frameworks */,
@@ -269,7 +291,7 @@
 			);
 			dependencies = (
 			);
-			name = Debug;
+			name = "OSX App";
 			productName = Test;
 			productReference = F2F3F6AA1985DE9700C8FAF4 /* OpenGLTut.app */;
 			productType = "com.apple.product-type.application";
@@ -301,7 +323,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F2F3F6A91985DE9700C8FAF4 /* Debug */,
+				F2F3F6A91985DE9700C8FAF4 /* OSX App */,
 			);
 		};
 /* End PBXProject section */
@@ -311,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F20B0F90198A55AF00D87E8B /* texture.png in Resources */,
 				F2DD7A071985FCA8000E5D31 /* Images.xcassets in Resources */,
 				F2DD7A061985FC84000E5D31 /* empty in Resources */,
 			);
@@ -341,6 +364,7 @@
 				F2D9BA13198805DC0052836B /* first_person.cpp in Sources */,
 				F2D9B9FE1986733B0052836B /* model_renderer.cpp in Sources */,
 				F2F3F6CF1985DF0700C8FAF4 /* opengl_utils.cpp in Sources */,
+				F20B0F8D198A537500D87E8B /* texture.cpp in Sources */,
 				F2F3F6CA1985DEF600C8FAF4 /* main.cpp in Sources */,
 				F2D9B9FD1986733B0052836B /* matrix_refresher.cpp in Sources */,
 			);
@@ -495,7 +519,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F2F3F6C41985DE9700C8FAF4 /* Build configuration list for PBXNativeTarget "Debug" */ = {
+		F2F3F6C41985DE9700C8FAF4 /* Build configuration list for PBXNativeTarget "OSX App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F2F3F6C51985DE9700C8FAF4 /* Debug */,

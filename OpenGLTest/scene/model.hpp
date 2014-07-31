@@ -20,6 +20,7 @@
 #define GLM_FORCE_RADIANS
 #include "glm/glm.hpp"
 #include "../graphics/shader.hpp"
+#include "../graphics/texture.hpp"
 
 #include "group.hpp"
 
@@ -32,9 +33,12 @@ class Model : public Group {
     const int _indexCount;
     const GLenum glType = GL_UNSIGNED_INT;
     std::shared_ptr<Shader> shader;
+    std::shared_ptr<Texture> texture;
 public:
-    Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr<Shader> shad);
-    
+    Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr<Shader> shad, std::shared_ptr<Texture> tex);
+
+    Model(Mesh mesh, std::shared_ptr<Shader> shad, std::shared_ptr<Texture> texture);
+
     Model(Mesh mesh, std::shared_ptr<Shader> shad);
     
     int indexCount() const;

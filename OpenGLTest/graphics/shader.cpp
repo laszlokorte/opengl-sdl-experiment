@@ -33,6 +33,7 @@ Shader::Handles Shader::createProgram(const GLchar** vertexShader, const GLchar*
     h.positionLocation = 1;
     h.colorLocation = 2;
     h.normalLocation = 3;
+    h.texCoordLocation = 4;
     
     GLint compileOk;
     GLint errLength;
@@ -56,6 +57,12 @@ Shader::Handles Shader::createProgram(const GLchar** vertexShader, const GLchar*
     if(ident.vertexColor != NULL) {
         glBindAttribLocation(h.program, h.colorLocation, ident.vertexColor);
     }
+    if(ident.vertexColor != NULL) {
+        glBindAttribLocation(h.program, h.colorLocation, ident.vertexColor);
+    }
+    if(ident.vertexTexCoord != NULL) {
+        glBindAttribLocation(h.program, h.texCoordLocation, ident.vertexTexCoord);
+    }
     
     
     glLinkProgram(h.program);
@@ -68,9 +75,21 @@ Shader::Handles Shader::createProgram(const GLchar** vertexShader, const GLchar*
         throw ShaderException(errMsg);
     }
     
-    h.modelViewMatrixUniform = glGetUniformLocation(h.program, ident.uniformModelViewMatrix);
+    h.modelMatrixUniform = glGetUniformLocation(h.program, ident.uniformModelMatrix);
+    h.viewMatrixUniform = glGetUniformLocation(h.program, ident.uniformViewMatrix);
     h.projectionMatrixUniform = glGetUniformLocation(h.program, ident.uniformProjectionMatrix);
     h.textureUniform = glGetUniformLocation(h.program, ident.uniformTexture);
+
+    h.cameraPositionUniform = glGetUniformLocation(h.program, ident.cameraPosition);
+
+    h.light.colorUniform = glGetUniformLocation(h.program, ident.light.color);
+    h.light.positionUniform = glGetUniformLocation(h.program, ident.light.position);
+    h.light.ambientIntensityUniform = glGetUniformLocation(h.program, ident.light.ambientIntensity);
+    h.light.diffuseIntensityUniform = glGetUniformLocation(h.program, ident.light.diffuseIntensity);
+
+    h.material.specularIntensityUniform = glGetUniformLocation(h.program, ident.material.specularIntensity);
+    h.material.shininessUniform = glGetUniformLocation(h.program, ident.material.shininess);
+
     
     glDeleteProgram(vsh);
     glDeleteProgram(fsh);

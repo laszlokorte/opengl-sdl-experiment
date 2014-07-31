@@ -34,6 +34,12 @@ struct ColorRGBA {
     GLfloat A;
 };
 
+struct ColorRGB {
+    GLfloat R;
+    GLfloat G;
+    GLfloat B;
+};
+
 struct Vertex {
     Vec3 Position;
     Vec3 Normal;
@@ -46,6 +52,38 @@ struct Triangle {
     GLuint B;
     GLuint C;
 };
+
+struct LightHandle {
+    GLuint colorUniform = -1;
+    GLuint positionUniform = -1;
+    GLuint ambientIntensityUniform = -1;
+    GLuint diffuseIntensityUniform = -1;
+};
+
+struct MaterialHandle {
+    GLuint shininessUniform = -1;
+    GLuint specularIntensityUniform = -1;
+};
+
+class Light {
+public:
+    ColorRGB color;
+    Vec3 position;
+    float ambientIntensity;
+    float diffuseIntensity;
+    void prepareRender(const LightHandle &h) const;
+    void finishRender(const LightHandle &h) const;
+};
+
+class Material {
+public:
+
+    float shininess;
+    float specularIntensity;
+    void prepareRender(const MaterialHandle &h) const;
+    void finishRender(const MaterialHandle &h) const;
+};
+
 
 class Mesh {
 public:

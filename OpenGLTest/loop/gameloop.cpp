@@ -152,6 +152,7 @@ void GameLoop::start() {
         }
         
     }
+    
 }
 
 void GameLoop::stop()

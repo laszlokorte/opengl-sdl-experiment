@@ -10,6 +10,17 @@
 #include "model_renderer.hpp"
 #include "../../utils/opengl_utils.hpp"
 
+ModelRenderer::ModelRenderer()
+{
+    light.color = ColorRGB{1.f,1.f,1.f};
+    light.ambientIntensity = 0.5;
+    light.diffuseIntensity = 1.1;
+    light.position = Vec3{30,15,15};
+    
+    material.shininess = 10.3;
+    material.specularIntensity = 1.6;
+}
+
 ModelRenderer::~ModelRenderer()
 {
 }
@@ -32,12 +43,21 @@ void ModelRenderer::leave( Model &m )
 }
 
 void ModelRenderer::renderModel(const Model &model) const {
-    const glm::mat4 modelView = model.getMatrix();
+    
+    const glm::mat4 modelMatrix = model.getMatrix();
 
     model.shader->prepareRender();
 
-    glUniformMatrix4fv(model.shader->handles.modelViewMatrixUniform, 1, GL_FALSE, &modelView[0][0]);
+    glUniformMatrix4fv(model.shader->handles.modelMatrixUniform, 1, GL_FALSE, &modelMatrix[0][0]);
+    glUniformMatrix4fv(model.shader->handles.viewMatrixUniform, 1, GL_FALSE, &viewMatrix[0][0]);
     glUniformMatrix4fv(model.shader->handles.projectionMatrixUniform, 1, GL_FALSE, &projection[0][0]);
+    glUniform3f(model.shader->handles.cameraPositionUniform, cameraPosition.X, cameraPosition.Y, cameraPosition.Z);
+        
+    model.texture->prepareRender(model.shader->handles.textureUniform);
+    material.prepareRender(model.shader->handles.material);
+    light.prepareRender(model.shader->handles.light);
+    
+    
     GLenum err;
     if((err = glGetError()) != GL_NO_ERROR) {
         std::cerr << GLErrorString(err);
@@ -48,6 +68,11 @@ void ModelRenderer::renderModel(const Model &model) const {
 
     glBindVertexArray(0);
 
+    light.finishRender(model.shader->handles.light);
+    material.finishRender(model.shader->handles.material);
+
+    
+    model.texture->finishRender();
     model.shader->finishRender();
 }
 

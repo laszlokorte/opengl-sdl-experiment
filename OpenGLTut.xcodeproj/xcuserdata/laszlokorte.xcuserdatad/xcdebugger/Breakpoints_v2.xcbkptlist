@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
             endingLineNumber = "14"
-            landmarkName = "Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr&lt;Shader&gt; shad)"
+            landmarkName = "Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr&lt;Shader&gt; shad, std::shared_ptr&lt;Texture&gt; tex)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenGLTest/loop/render_delegate.cpp"
-            timestampString = "428421643.402818"
+            timestampString = "428512851.776353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "SceneDelegate::setup(GameLoop &amp;l)"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenGLTest/main.cpp"
-            timestampString = "428241594.862526"
+            timestampString = "428512913.556059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "8"
-            endingLineNumber = "8"
+            startingLineNumber = "7"
+            endingLineNumber = "7"
             landmarkName = "main(int argc, char *argv[])"
             landmarkType = "7">
          </BreakpointContent>
@@ -278,11 +278,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenGLTest/loop/render_delegate.cpp"
-            timestampString = "428425238.193501"
+            timestampString = "428525793.297243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "SceneDelegate::update(GameLoop &amp;l)"
             landmarkType = "5">
          </BreakpointContent>
@@ -310,11 +310,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenGLTest/graphics/base.cpp"
-            timestampString = "428424521.927651"
+            timestampString = "428525478.441338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "Mesh::Mesh(const std::vector&lt;Vertex&gt; _vertices, const std::vector&lt;Triangle&gt; _triangles)"
             landmarkType = "5">
          </BreakpointContent>
@@ -331,7 +331,23 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr&lt;Shader&gt; shad)"
+            landmarkName = "Model::Model(glm::vec3 pos, glm::quat rot, glm::vec3 scl, Mesh mesh, std::shared_ptr&lt;Shader&gt; shad, std::shared_ptr&lt;Texture&gt; tex)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpenGLTest/loop/gameloop.cpp"
+            timestampString = "428510996.259407"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "GameLoop::start()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

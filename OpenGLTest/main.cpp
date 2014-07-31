@@ -1,7 +1,6 @@
 #include "loop/gameloop.hpp"
 #include "loop/render_delegate.hpp"
 
-
 int
 main(int argc, char *argv[])
 {

@@ -39,21 +39,42 @@ class Shader {
         GLuint positionLocation = -1;
         GLuint normalLocation = -1;
         GLuint colorLocation = -1;
-        GLuint modelViewMatrixUniform = -1;
+        GLuint texCoordLocation = -1;
+        GLuint modelMatrixUniform = -1;
+        GLuint viewMatrixUniform = -1;
         GLuint projectionMatrixUniform = -1;
         GLuint textureUniform = -1;
+        GLuint cameraPositionUniform = -1;
+        
+        LightHandle light;
+        MaterialHandle material;
     };
     
     
 public:
     const Handles handles;
     static const struct Identifiers {
-        const char* uniformModelViewMatrix = "uModelViewMatrix";
+        const char* uniformModelMatrix = "uModelMatrix";
+        const char* uniformViewMatrix = "uViewMatrix";
         const char* uniformProjectionMatrix = "uProjectionMatrix";
         const char* uniformTexture = "uTexture";
         const char* vertexPosition = "vPosition";
         const char* vertexNormal = "vNormal";
         const char* vertexColor = "vColor";
+        const char* vertexTexCoord = "vTexCoord";
+        const char* cameraPosition = "cameraPosition";
+        
+        struct {
+            const char* color = "uLight.color";
+            const char* position = "uLight.position";
+            const char* ambientIntensity = "uLight.ambientIntensity";
+            const char* diffuseIntensity = "uLight.diffuseIntensity";
+        } light;
+        
+        struct {
+            const char* specularIntensity = "uMaterial.specularIntensity";
+            const char* shininess = "uMaterial.shininess";
+        } material;
     } identifiers;
 
     
