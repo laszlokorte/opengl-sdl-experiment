@@ -91,21 +91,27 @@ bool SceneDelegate::setup(GameLoop &l) {
     }
     scene.root = std::make_shared<Group>();
     
-    std::string pathD = std::string(SDL_GetBasePath()) + "texture-d.png";
-    std::string pathS = std::string(SDL_GetBasePath()) + "texture-s.png";
-    std::string pathE = std::string(SDL_GetBasePath()) + "texture-e.png";
+    auto base = std::string(SDL_GetBasePath());
+    std::string pathD = base + "texture-d.png";
+    std::string pathS = base + "texture-s.png";
+    std::string pathE = base + "texture-e.png";
 
     Texture d(pathD);
     Texture s(pathS);
     Texture e(pathE);
     auto m = std::make_shared<Material>(std::move(d), std::move(e), std::move(s), 10);
+    
+    Texture cd(base + "cylinder-d.png");
+    Texture cs(base + "cylinder-s.png");
+    Texture ce(base + "cylinder-e.png");
+    auto cm = std::make_shared<Material>(std::move(cd), std::move(ce), std::move(cs), 10);
 
     scene.cube = std::make_shared<Model>(mesh::makeCube(), scene.shader, m);
     scene.cube->scale = glm::vec3(10,10,10);
     scene.root->add(scene.cube);
     scene.cube->position = glm::vec3(0.0f,10.f,0.f);
     
-    auto cyl = std::make_shared<Model>(mesh::makeCylinder(40, 2, 1), scene.shader, m);
+    auto cyl = std::make_shared<Model>(mesh::makeCylinder(40, 2, 1), scene.shader, cm);
     cyl->rotation = glm::rotate(glm::quat(), glm::radians(235.f), glm::vec3(0,1,0)) * glm::rotate(glm::quat(), glm::radians(90.f), glm::vec3(1,0,0));
     cyl->scale = glm::vec3(5,5,5);
     cyl->position = glm::vec3(7.0f,5.f,30.f);

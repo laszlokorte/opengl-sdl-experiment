@@ -89,13 +89,29 @@ namespace mesh {
     Mesh makePyramid() {
         std::vector<Vertex> vertices = {
             // Base
-            {.Position = { 1,-1, 1}, .Normal = {0,0,0}, .Color = {0, 1, 0, 1}},
-            {.Position = {-1,-1, 1}, .Normal = {0,0,0}, .Color = {0, 0, 0, 1}},
-            {.Position = {-1,-1, -1}, .Normal = {0,0,0}, .Color = {0, 0, 1, 1}},
-            {.Position = { 1,-1, -1}, .Normal = {0,0,0}, .Color = {0, 1, 1, 1}},
+            {.Position = { 1,-1, 1}, .Normal = {0,-1,0}, .Color = {0, 1, 0, 1}, .TextureCoord = {1,1}},
+            {.Position = {-1,-1, 1}, .Normal = {0,-1,0}, .Color = {0, 0, 0, 1}, .TextureCoord = {0,1}},
+            {.Position = {-1,-1, -1}, .Normal = {0,-1,0}, .Color = {0, 0, 1, 1}, .TextureCoord = {0,0}},
+            {.Position = { 1,-1, -1}, .Normal = {0,-1,0}, .Color = {0, 1, 1, 1}, .TextureCoord = {1,0}},
 
             // Tip
-            {.Position = {0, 1, 0}, .Normal = {0,0,0}, .Color = {1, 0, 1, 1}},
+            {.Position = { 1,-1, 1}, .Normal = {0,1,1}, .Color = {0, 1, 0, 1}, .TextureCoord = {1,1}},
+            {.Position = {-1,-1, 1}, .Normal = {0,1,1}, .Color = {0, 0, 0, 1}, .TextureCoord = {0,1}},
+            {.Position = {0, 1, 0}, .Normal = {0,1,1}, .Color = {1, 0, 1, 1}, .TextureCoord = {0.5,0}},
+        
+            {.Position = {-1,-1, 1}, .Normal = {-1,1,0}, .Color = {0, 0, 0, 1}, .TextureCoord = {1,1}},
+            {.Position = {-1,-1, -1}, .Normal = {-1,1,0}, .Color = {0, 0, 1, 1}, .TextureCoord = {0,1}},
+            {.Position = {0, 1, 0}, .Normal = {-1,1,0}, .Color = {1, 0, 1, 1}, .TextureCoord = {0.5,0}},
+
+            {.Position = {-1,-1, -1}, .Normal = {0,1,-1}, .Color = {0, 0, 1, 1}, .TextureCoord = {1,1}},
+            {.Position = { 1,-1, -1}, .Normal = {0,1,-1}, .Color = {0, 1, 1, 1}, .TextureCoord = {0,1}},
+            {.Position = {0, 1, 0}, .Normal = {0,1,-1}, .Color = {1, 0, 1, 1}, .TextureCoord = {0.5,0}},
+
+            {.Position = { 1,-1, 1}, .Normal = {1,1,0}, .Color = {0, 1, 0, 1}, .TextureCoord = {0,1}},
+            {.Position = { 1,-1, -1}, .Normal = {1,1,0}, .Color = {0, 1, 1, 1}, .TextureCoord = {1,1}},
+            {.Position = {0, 1, 0}, .Normal = {1,1,0}, .Color = {1, 0, 1, 1}, .TextureCoord = {0.5,0}},
+
+        
         };
         
         std::vector<Triangle> triangles = {
@@ -104,10 +120,10 @@ namespace mesh {
             {2, 3, 0},
 
             //Sides
-            {1, 0, 4},
-            {2, 1, 4},
-            {3, 2, 4},
-            {0, 3, 4},
+            {5, 4, 6},
+            {8, 7, 9},
+            {11, 10, 12},
+            {13, 14, 15},
         };
         
         return Mesh(vertices, triangles);
@@ -130,27 +146,41 @@ namespace mesh {
         float t;
         
         glm::vec2 p(radius, 0);
+        glm::vec2 txtop(.25, 0);
         
-        for(GLuint ii = 0; ii < sides*2; ii++)
+        for(GLuint ii = 0; ii < sides+1; ii++)
         {
-            vertices.push_back(Vertex{{p.x,-h2, p.y},{0,0,0}, {1, 0, 1, 1}});
-            vertices.push_back(Vertex{{p.x,h2, p.y},{0,0,0}, {1, 1, 0, 1}});
+            vertices.push_back(Vertex{{p.x,-h2, p.y},{p.x,0,p.y}, {1, 0, 1, 1}, {0,(ii/(float)sides)}});
+            vertices.push_back(Vertex{{p.x,h2, p.y},{p.x,0,p.y}, {1, 1, 0, 1}, {0.5,(ii/(float)sides)}});
+            
+            vertices.push_back(Vertex{{p.x,-h2, p.y},{0,-1,0}, {1, 0, 1, 1}, {0.75f-txtop.x, 0.25f-txtop.y}});
+            
+            vertices.push_back(Vertex{{p.x,h2, p.y},{0,1,0}, {1, 1, 0, 1}, {0.75f-txtop.x,0.75f-txtop.y}});
+            
             
             //apply the rotation matrix
             t = p.x;
             p.x = c * p.x - s * p.y;
             p.y = s * t + c * p.y;
+            
+            t = txtop.x;
+            txtop.x = c * txtop.x - s * txtop.y;
+            txtop.y = s * t + c * txtop.y;
         }
         
-        vertices.push_back(Vertex{{0,-h2, 0},{0,0,0}, {0, 1, 1, 1}});
-        vertices.push_back(Vertex{{0,h2, 0},{0,0,0}, {0, 1, 1, 1}});
+        vertices.push_back(Vertex{{0,-h2, 0},{0,-1,0}, {0, 1, 1, 1}, {0.75, 0.25}});
+        vertices.push_back(Vertex{{0,h2, 0},{0,1,0}, {0, 1, 1, 1}, {0.75,0.75}});
         
-        for(GLuint ii = 0; ii <= sides*2; ii+=2) {
-            triangles.push_back(Triangle{ii,ii+1,ii+2});
-            triangles.push_back(Triangle{ii+2,ii+1,(ii+3)%(sides*2)});
-            
-            triangles.push_back(Triangle{sides*4, ii,(ii+2)});
-            triangles.push_back(Triangle{ii+1,sides*4+1,(ii+3)});
+        GLuint vertexCount = 4*sides+4;
+        
+        for(GLuint ii = 0; ii <= vertexCount; ii+=4) {
+            triangles.push_back(Triangle{ii%vertexCount,(ii+1)%vertexCount,(ii+5)%vertexCount});
+
+            triangles.push_back(Triangle{ii%vertexCount,(ii+5)%vertexCount,(ii+4)%vertexCount});
+
+            triangles.push_back(Triangle{(ii+2)%vertexCount,(ii+6)%vertexCount,vertexCount});
+
+            triangles.push_back(Triangle{(ii+7)%vertexCount,(ii+3)%vertexCount,vertexCount+1});
         }
         
         return Mesh(vertices, triangles);

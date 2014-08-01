@@ -33,6 +33,9 @@
 		F2DD7A061985FC84000E5D31 /* empty in Resources */ = {isa = PBXBuildFile; fileRef = F2DD7A041985FC77000E5D31 /* empty */; };
 		F2DD7A071985FCA8000E5D31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DD79D01985FA12000E5D31 /* Images.xcassets */; };
 		F2DD7A0A1985FD84000E5D31 /* time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DD7A081985FD84000E5D31 /* time.cpp */; };
+		F2E108DF198BEB0900D02BFF /* cylinder-e.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E108DC198BEB0900D02BFF /* cylinder-e.png */; };
+		F2E108E0198BEB0900D02BFF /* cylinder-s.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E108DD198BEB0900D02BFF /* cylinder-s.png */; };
+		F2E108E2198BEB8C00D02BFF /* cylinder-d.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E108E1198BEB8C00D02BFF /* cylinder-d.png */; };
 		F2F3F6CA1985DEF600C8FAF4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F26E0DCA1893EFC300D4C163 /* main.cpp */; };
 		F2F3F6CB1985DF0700C8FAF4 /* group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F831985C9C300102679 /* group.cpp */; };
 		F2F3F6CC1985DF0700C8FAF4 /* model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2DE3F861985C9DD00102679 /* model.cpp */; };
@@ -112,6 +115,9 @@
 		F2DE3F841985C9C300102679 /* group.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = group.hpp; sourceTree = "<group>"; };
 		F2DE3F861985C9DD00102679 /* model.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = model.cpp; sourceTree = "<group>"; };
 		F2DE3F871985C9DD00102679 /* model.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = model.hpp; sourceTree = "<group>"; };
+		F2E108DC198BEB0900D02BFF /* cylinder-e.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cylinder-e.png"; sourceTree = "<group>"; };
+		F2E108DD198BEB0900D02BFF /* cylinder-s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cylinder-s.png"; sourceTree = "<group>"; };
+		F2E108E1198BEB8C00D02BFF /* cylinder-d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cylinder-d.png"; sourceTree = "<group>"; };
 		F2F3F6AA1985DE9700C8FAF4 /* OpenGLTut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLTut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F3F6D11985DF5A00C8FAF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +139,9 @@
 		F20B0F8E198A55AF00D87E8B /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				F2E108E1198BEB8C00D02BFF /* cylinder-d.png */,
+				F2E108DC198BEB0900D02BFF /* cylinder-e.png */,
+				F2E108DD198BEB0900D02BFF /* cylinder-s.png */,
 				F274D880198B02B400467FEF /* texture-e.png */,
 				F274D881198B02B400467FEF /* texture-s.png */,
 				F274D882198B02B400467FEF /* texture-d.png */,
@@ -347,8 +356,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2E108E2198BEB8C00D02BFF /* cylinder-d.png in Resources */,
 				F20B0F90198A55AF00D87E8B /* texture.png in Resources */,
+				F2E108DF198BEB0900D02BFF /* cylinder-e.png in Resources */,
 				F2DD7A071985FCA8000E5D31 /* Images.xcassets in Resources */,
+				F2E108E0198BEB0900D02BFF /* cylinder-s.png in Resources */,
 				F274D885198B02B400467FEF /* texture-d.png in Resources */,
 				F2DD7A061985FC84000E5D31 /* empty in Resources */,
 				F274D884198B02B400467FEF /* texture-s.png in Resources */,
