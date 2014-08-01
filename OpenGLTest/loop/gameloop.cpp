@@ -62,7 +62,7 @@ GameLoop::GameLoop(const Config &c, GameLoopDelegate &del) :
      }
      
      if(conf.lockMouse) {
-         SDL_SetRelativeMouseMode(SDL_TRUE);
+         lockMouse();
      }
 }
 
@@ -106,25 +106,41 @@ void GameLoop::start() {
                                 delegate.setViewport(e.window.data1, e.window.data2);
                             case SDL_WINDOWEVENT_MINIMIZED:
                                 focused = false;
-                                SDL_SetRelativeMouseMode(SDL_FALSE);
+                                if(conf.lockMouse) {
+                                    unlockMouse();
+                                }
 
                                 break;
                             case SDL_WINDOWEVENT_RESTORED:
                                 focused = true;
                                 if(conf.lockMouse) {
-                                    SDL_SetRelativeMouseMode(SDL_TRUE);
+                                    lockMouse();
                                 }
                                 break;
                             case SDL_WINDOWEVENT_FOCUS_LOST:
-                                SDL_SetRelativeMouseMode(SDL_FALSE);
+                                if(conf.lockMouse) {
+                                    unlockMouse();
+                                }
                                 break;
                             case SDL_WINDOWEVENT_FOCUS_GAINED:
                                 if(conf.lockMouse) {
-                                    SDL_SetRelativeMouseMode(SDL_TRUE);
+                                    lockMouse();
                                 }
                                 break;
                         };
                         break;
+                    case SDL_KEYDOWN:
+                        if(e.key.keysym.sym == SDLK_ESCAPE) {
+                            toggleMouse();
+                        }
+                        break;
+                    
+                    case SDL_MOUSEMOTION:
+                        if(!state.mouseLocked) {
+                            continue;
+                        }
+                        break;
+                    
 
                 }
                 delegate.handleEvent(e);
@@ -153,6 +169,24 @@ void GameLoop::start() {
         
     }
     
+}
+
+void GameLoop::lockMouse() {
+    SDL_SetRelativeMouseMode(SDL_TRUE);
+    state.mouseLocked = true;
+}
+
+void GameLoop::unlockMouse() {
+    SDL_SetRelativeMouseMode(SDL_FALSE);
+    state.mouseLocked = false;
+}
+
+void GameLoop::toggleMouse() {
+    if(state.mouseLocked) {
+        unlockMouse();
+    } else {
+        lockMouse();
+    }
 }
 
 void GameLoop::stop()

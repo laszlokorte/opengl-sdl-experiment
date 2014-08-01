@@ -45,12 +45,22 @@ class GameLoop {
     int windowWidth = 1000;
     int windowHeight = 600;
     
+    struct {
+        bool mouseLocked;
+    } state;
+    
 public:
     GameLoop(const Config &c, GameLoopDelegate &del);
     
     void start();
     
     void stop();
+    
+    void lockMouse();
+    
+    void unlockMouse();
+    
+    void toggleMouse();
     
     ~GameLoop();
 };
