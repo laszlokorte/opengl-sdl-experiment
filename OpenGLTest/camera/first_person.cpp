@@ -27,14 +27,14 @@ void FirstPersonMovement::rotateHorizontally(float radians) const
 
 void FirstPersonMovement::rotateVertically(float radians) const
 {
-    glm::quat newRot = glm::rotate(camera.rotation, -radians, sideward);
+    auto q = glm::angleAxis(-radians, sideward);
     
-    glm::vec3 test = glm::rotate(newRot, up);
+    glm::quat newRot = camera.rotation * q;
     
-    if(glm::dot(test, up) > 0) {
+    if(glm::dot(glm::rotate(newRot, up), up) > 0) {
         camera.rotation = newRot;
+        camera.dirty = true;
     }
-    camera.dirty = true;
 }
 
 void FirstPersonMovement::move(glm::vec2 dir2d, float amount) const
