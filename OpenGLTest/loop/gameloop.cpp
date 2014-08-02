@@ -106,25 +106,18 @@ void GameLoop::start() {
                                 delegate.setViewport(e.window.data1, e.window.data2);
                             case SDL_WINDOWEVENT_MINIMIZED:
                                 focused = false;
-                                if(conf.lockMouse) {
-                                    unlockMouse();
-                                }
-
                                 break;
                             case SDL_WINDOWEVENT_RESTORED:
                                 focused = true;
-                                if(conf.lockMouse) {
-                                    lockMouse();
-                                }
                                 break;
                             case SDL_WINDOWEVENT_FOCUS_LOST:
-                                if(conf.lockMouse) {
-                                    unlockMouse();
+                                if(state.mouseLocked) {
+                                    SDL_SetRelativeMouseMode(SDL_FALSE);
                                 }
                                 break;
                             case SDL_WINDOWEVENT_FOCUS_GAINED:
-                                if(conf.lockMouse) {
-                                    lockMouse();
+                                if(state.mouseLocked) {
+                                    SDL_SetRelativeMouseMode(SDL_TRUE);
                                 }
                                 break;
                         };
@@ -170,6 +163,7 @@ void GameLoop::start() {
     }
     
 }
+
 
 void GameLoop::lockMouse() {
     SDL_SetRelativeMouseMode(SDL_TRUE);

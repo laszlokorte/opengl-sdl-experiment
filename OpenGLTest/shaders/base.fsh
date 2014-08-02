@@ -34,8 +34,6 @@ void main() {
     vec3 Normal = normalize(fNormal);
     float lambertian = max(dot(lightDirection,Normal), 0.0);
     
-    vec3 Eye = normalize(cameraPosition-fPosition);
-    vec3 halfDir = normalize(lightDirection + Eye);
     //vec3 Reflection = reflect(-lightDirection, Normal);
     float SpecularFactor = 0.0;
     
@@ -50,15 +48,18 @@ void main() {
     vec4 DiffuseResult = lambertian * vec4(uLight.color * uLight.diffuseIntensity,1) * fDiffuseBase;
     
     // Specular
-    if(lambertian > 0.0) {
+    if(lambertian > 0.0 && length(fSpecularBase) > 0.0) {
+        vec3 Eye = normalize(cameraPosition-fPosition);
+        vec3 halfDir = normalize(lightDirection + Eye);
+        
         //float specAngle = max(dot(Reflection, Eye), 0.0);
         float specAngle = max(dot(halfDir, Normal), 0.0);
-        SpecularFactor = pow(specAngle, uMaterial.shininess * uMaterial.shininess);
+        SpecularFactor  = pow(specAngle, uMaterial.shininess * uMaterial.shininess);
     }
     
     vec4 SpecularResult = fSpecularBase * SpecularFactor;
     
-    oColor =  vec4(max(AmbientResult.xyz, max(1.5*fEmittingBase.xyz, DiffuseResult.xyz)) + SpecularResult.xyz, max(fDiffuseBase.w, 2*SpecularResult.w));
+    oColor =  vec4(max(AmbientResult.xyz, max(1.5*fEmittingBase.xyz*fEmittingBase.w, DiffuseResult.xyz)) + SpecularResult.xyz, max(fDiffuseBase.w, 2*SpecularResult.w));
 }
           
 )

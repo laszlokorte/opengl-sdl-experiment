@@ -89,27 +89,27 @@ namespace mesh {
     Mesh makePyramid() {
         std::vector<Vertex> vertices = {
             // Base
-            {.Position = { 1,-1, 1}, .Normal = {0,-1,0}, .Color = {0, 1, 0, 1}, .TextureCoord = {1,1}},
-            {.Position = {-1,-1, 1}, .Normal = {0,-1,0}, .Color = {0, 0, 0, 1}, .TextureCoord = {0,1}},
-            {.Position = {-1,-1, -1}, .Normal = {0,-1,0}, .Color = {0, 0, 1, 1}, .TextureCoord = {0,0}},
-            {.Position = { 1,-1, -1}, .Normal = {0,-1,0}, .Color = {0, 1, 1, 1}, .TextureCoord = {1,0}},
+            {.Position = { 1,-1, 1}, .Normal = {0,-1,0}, .Color = {0, 1, 0, 1}, .TextureCoord = {0.66,0.66}},
+            {.Position = {-1,-1, 1}, .Normal = {0,-1,0}, .Color = {0, 0, 0, 1}, .TextureCoord = {0.33,0.66}},
+            {.Position = {-1,-1, -1}, .Normal = {0,-1,0}, .Color = {0, 0, 1, 1}, .TextureCoord = {0.33,0.33}},
+            {.Position = { 1,-1, -1}, .Normal = {0,-1,0}, .Color = {0, 1, 1, 1}, .TextureCoord = {0.66,0.33}},
 
             // Tip
-            {.Position = { 1,-1, 1}, .Normal = {0,1,1}, .Color = {0, 1, 0, 1}, .TextureCoord = {1,1}},
-            {.Position = {-1,-1, 1}, .Normal = {0,1,1}, .Color = {0, 0, 0, 1}, .TextureCoord = {0,1}},
+            {.Position = { 1,-1, 1}, .Normal = {0,1,1}, .Color = {0, 1, 0, 1}, .TextureCoord = {0.33,0.33}},
+            {.Position = {-1,-1, 1}, .Normal = {0,1,1}, .Color = {0, 0, 0, 1}, .TextureCoord = {0.66,0.33}},
             {.Position = {0, 1, 0}, .Normal = {0,1,1}, .Color = {1, 0, 1, 1}, .TextureCoord = {0.5,0}},
         
-            {.Position = {-1,-1, 1}, .Normal = {-1,1,0}, .Color = {0, 0, 0, 1}, .TextureCoord = {1,1}},
-            {.Position = {-1,-1, -1}, .Normal = {-1,1,0}, .Color = {0, 0, 1, 1}, .TextureCoord = {0,1}},
-            {.Position = {0, 1, 0}, .Normal = {-1,1,0}, .Color = {1, 0, 1, 1}, .TextureCoord = {0.5,0}},
+            {.Position = {-1,-1, 1}, .Normal = {-1,1,0}, .Color = {0, 0, 0, 1}, .TextureCoord = {0.66,0.33}},
+            {.Position = {-1,-1, -1}, .Normal = {-1,1,0}, .Color = {0, 0, 1, 1}, .TextureCoord = {0.66,0.66}},
+            {.Position = {0, 1, 0}, .Normal = {-1,1,0}, .Color = {1, 0, 1, 1}, .TextureCoord = {1,0.5}},
 
-            {.Position = {-1,-1, -1}, .Normal = {0,1,-1}, .Color = {0, 0, 1, 1}, .TextureCoord = {1,1}},
-            {.Position = { 1,-1, -1}, .Normal = {0,1,-1}, .Color = {0, 1, 1, 1}, .TextureCoord = {0,1}},
-            {.Position = {0, 1, 0}, .Normal = {0,1,-1}, .Color = {1, 0, 1, 1}, .TextureCoord = {0.5,0}},
+            {.Position = {-1,-1, -1}, .Normal = {0,1,-1}, .Color = {0, 0, 1, 1}, .TextureCoord = {0.33,0.66}},
+            {.Position = { 1,-1, -1}, .Normal = {0,1,-1}, .Color = {0, 1, 1, 1}, .TextureCoord = {0.66,0.66}},
+            {.Position = {0, 1, 0}, .Normal = {0,1,-1}, .Color = {1, 0, 1, 1}, .TextureCoord = {0.5,1}},
 
-            {.Position = { 1,-1, 1}, .Normal = {1,1,0}, .Color = {0, 1, 0, 1}, .TextureCoord = {0,1}},
-            {.Position = { 1,-1, -1}, .Normal = {1,1,0}, .Color = {0, 1, 1, 1}, .TextureCoord = {1,1}},
-            {.Position = {0, 1, 0}, .Normal = {1,1,0}, .Color = {1, 0, 1, 1}, .TextureCoord = {0.5,0}},
+            {.Position = { 1,-1, 1}, .Normal = {1,1,0}, .Color = {0, 1, 0, 1}, .TextureCoord = {0.33,0.66}},
+            {.Position = { 1,-1, -1}, .Normal = {1,1,0}, .Color = {0, 1, 1, 1}, .TextureCoord = {0.33,0.33}},
+            {.Position = {0, 1, 0}, .Normal = {1,1,0}, .Color = {1, 0, 1, 1}, .TextureCoord = {0,0.5}},
 
         
         };

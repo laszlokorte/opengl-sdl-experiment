@@ -106,27 +106,39 @@ bool SceneDelegate::setup(GameLoop &l) {
     Texture cs(base + "cylinder-s.png");
     Texture ce(base + "cylinder-e.png");
     auto cm = std::make_shared<Material>(std::move(cd), std::move(ce), std::move(cs), 10);
+    
+    Texture pd(base + "pyramid-d.png");
+    Texture ps(base + "pyramid-s.png");
+    Texture pe(base + "pyramid-e.png");
+    auto pyramidMat = std::make_shared<Material>(std::move(pd), std::move(pe), std::move(ps), 10);
 
     scene.cube = std::make_shared<Model>(mesh::makeCube(), scene.shader, m);
     scene.cube->scale = glm::vec3(10,10,10);
-    scene.root->add(scene.cube);
     scene.cube->position = glm::vec3(0.0f,10.f,0.f);
+    
+    //scene.root->add(scene.cube);
+
     
     auto cyl = std::make_shared<Model>(mesh::makeCylinder(40, 2, 1), scene.shader, cm);
     cyl->rotation = glm::rotate(glm::quat(), glm::radians(235.f), glm::vec3(0,1,0)) * glm::rotate(glm::quat(), glm::radians(90.f), glm::vec3(1,0,0));
     cyl->scale = glm::vec3(5,5,5);
     cyl->position = glm::vec3(7.0f,4.f,30.f);
     
-    scene.root->add(cyl);
+    //scene.root->add(cyl);
     
-    auto pyr = std::make_shared<Model>(mesh::makePyramid(), scene.shader, m);
-    pyr->scale = glm::vec3(10,10,10);
-    pyr->position = glm::vec3(-23.0f,10.f,30.f);
+    auto pyr = std::make_shared<Model>(mesh::makePyramid(), scene.shader, pyramidMat);
+    pyr->scale = glm::vec3(30,30,30);
+    pyr->position = glm::vec3(-23.0f,60.f,30.f);
     
     scene.root->add(pyr);
     
-    auto terr = std::make_shared<Model>(terrain::loadTerrain(base+"terrain.png"), scene.shader, m);
-    terr->scale = glm::vec3(2,2,2);
+    
+    Texture sd(base + "sand-d.png");
+    Texture ss(base + "sand-s.png");
+    Texture se(base + "sand-e.png");
+    auto sandMat = std::make_shared<Material>(std::move(sd), std::move(se), std::move(ss), 10);
+    
+    auto terr = std::make_shared<Model>(terrain::loadTerrain(base+"terrain.png"), scene.shader, sandMat);
     terr->position = glm::vec3(0,-20.f,0);
     
     scene.root->add(terr);

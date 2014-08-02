@@ -15,7 +15,7 @@ ModelRenderer::ModelRenderer()
     light.color = ColorRGB{1.f,1.f,1.f};
     light.ambientIntensity = 0.5;
     light.diffuseIntensity = 1.5;
-    light.position = Vec3{30,15,15};
+    light.position = Vec3{30,60,15};
 }
 
 ModelRenderer::~ModelRenderer()
