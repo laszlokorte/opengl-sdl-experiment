@@ -17,6 +17,8 @@
 		F274D883198B02B400467FEF /* texture-e.png in Resources */ = {isa = PBXBuildFile; fileRef = F274D880198B02B400467FEF /* texture-e.png */; };
 		F274D884198B02B400467FEF /* texture-s.png in Resources */ = {isa = PBXBuildFile; fileRef = F274D881198B02B400467FEF /* texture-s.png */; };
 		F274D885198B02B400467FEF /* texture-d.png in Resources */ = {isa = PBXBuildFile; fileRef = F274D882198B02B400467FEF /* texture-d.png */; };
+		F2A03FBC198C0A8200C9BECD /* terrain.png in Resources */ = {isa = PBXBuildFile; fileRef = F2A03FBB198C0A8200C9BECD /* terrain.png */; };
+		F2A03FC7198C5BE500C9BECD /* terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2A03FC5198C5BE500C9BECD /* terrain.cpp */; };
 		F2D9B9E3198633D40052836B /* gameloop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9E2198633D40052836B /* gameloop.cpp */; };
 		F2D9B9E7198645120052836B /* render_delegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9E41986396B0052836B /* render_delegate.cpp */; };
 		F2D9B9ED1986575B0052836B /* component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D9B9EB1986575B0052836B /* component.cpp */; };
@@ -74,6 +76,9 @@
 		F274D881198B02B400467FEF /* texture-s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "texture-s.png"; sourceTree = "<group>"; };
 		F274D882198B02B400467FEF /* texture-d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "texture-d.png"; sourceTree = "<group>"; };
 		F291C98519860231006EBD70 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		F2A03FBB198C0A8200C9BECD /* terrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain.png; sourceTree = "<group>"; };
+		F2A03FC5198C5BE500C9BECD /* terrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = terrain.cpp; path = OpenGLTest/terrain/terrain.cpp; sourceTree = SOURCE_ROOT; };
+		F2A03FC6198C5BE500C9BECD /* terrain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = terrain.hpp; path = OpenGLTest/terrain/terrain.hpp; sourceTree = SOURCE_ROOT; };
 		F2A161AF198541190033F98A /* base.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = base.vsh; sourceTree = "<group>"; };
 		F2A161B0198541390033F98A /* base.fsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = base.fsh; sourceTree = "<group>"; };
 		F2D9B9E2198633D40052836B /* gameloop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gameloop.cpp; sourceTree = "<group>"; };
@@ -139,6 +144,7 @@
 		F20B0F8E198A55AF00D87E8B /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				F2A03FBB198C0A8200C9BECD /* terrain.png */,
 				F2E108E1198BEB8C00D02BFF /* cylinder-d.png */,
 				F2E108DC198BEB0900D02BFF /* cylinder-e.png */,
 				F2E108DD198BEB0900D02BFF /* cylinder-s.png */,
@@ -176,6 +182,7 @@
 				F2D9BA0D1987F9BD0052836B /* camera */,
 				F2DE3F761985C67A00102679 /* utils */,
 				F2DE3F7E1985C7EE00102679 /* graphics */,
+				F2A03FBD198C5B8200C9BECD /* terrain */,
 				F2DE3F7C1985C79D00102679 /* loop */,
 				F2DE3F7B1985C76D00102679 /* scene */,
 				F2DE3F7A1985C74A00102679 /* input */,
@@ -184,6 +191,15 @@
 				F26E0DCA1893EFC300D4C163 /* main.cpp */,
 			);
 			path = OpenGLTest;
+			sourceTree = "<group>";
+		};
+		F2A03FBD198C5B8200C9BECD /* terrain */ = {
+			isa = PBXGroup;
+			children = (
+				F2A03FC5198C5BE500C9BECD /* terrain.cpp */,
+				F2A03FC6198C5BE500C9BECD /* terrain.hpp */,
+			);
+			path = terrain;
 			sourceTree = "<group>";
 		};
 		F2A161AE198540DB0033F98A /* shaders */ = {
@@ -357,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E108E2198BEB8C00D02BFF /* cylinder-d.png in Resources */,
+				F2A03FBC198C0A8200C9BECD /* terrain.png in Resources */,
 				F20B0F90198A55AF00D87E8B /* texture.png in Resources */,
 				F2E108DF198BEB0900D02BFF /* cylinder-e.png in Resources */,
 				F2DD7A071985FCA8000E5D31 /* Images.xcassets in Resources */,
@@ -383,6 +400,7 @@
 				F2D9BA091987C2310052836B /* mouse.cpp in Sources */,
 				F2F3F6CB1985DF0700C8FAF4 /* group.cpp in Sources */,
 				F2F3F6CC1985DF0700C8FAF4 /* model.cpp in Sources */,
+				F2A03FC7198C5BE500C9BECD /* terrain.cpp in Sources */,
 				F2670B6519892BD300FF11A6 /* base.cpp in Sources */,
 				F2D9B9FF1986733B0052836B /* updater.cpp in Sources */,
 				F2D9BA031986848D0052836B /* keyboard.cpp in Sources */,

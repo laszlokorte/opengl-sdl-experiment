@@ -8,6 +8,7 @@
 
 #include "render_delegate.hpp"
 #include "../graphics/texture.hpp"
+#include "../terrain/terrain.hpp"
 
 
 #define glm_detail_intrinsic_integer
@@ -114,7 +115,7 @@ bool SceneDelegate::setup(GameLoop &l) {
     auto cyl = std::make_shared<Model>(mesh::makeCylinder(40, 2, 1), scene.shader, cm);
     cyl->rotation = glm::rotate(glm::quat(), glm::radians(235.f), glm::vec3(0,1,0)) * glm::rotate(glm::quat(), glm::radians(90.f), glm::vec3(1,0,0));
     cyl->scale = glm::vec3(5,5,5);
-    cyl->position = glm::vec3(7.0f,5.f,30.f);
+    cyl->position = glm::vec3(7.0f,4.f,30.f);
     
     scene.root->add(cyl);
     
@@ -123,6 +124,12 @@ bool SceneDelegate::setup(GameLoop &l) {
     pyr->position = glm::vec3(-23.0f,10.f,30.f);
     
     scene.root->add(pyr);
+    
+    auto terr = std::make_shared<Model>(terrain::loadTerrain(base+"terrain.png"), scene.shader, m);
+    terr->scale = glm::vec3(2,2,2);
+    terr->position = glm::vec3(0,-20.f,0);
+    
+    scene.root->add(terr);
    
     
     renderer.projection = glm::perspective(glm::radians(65.0f),16/9.0f,2.f, 400.0f);
